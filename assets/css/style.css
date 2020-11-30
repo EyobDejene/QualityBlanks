@@ -1,0 +1,450 @@
+/* FONT-FACE */
+
+@font-face {
+    font-family: 'MuseoSans-100';
+    src: url('../font/MuseoSans-100.otf');
+}
+
+@font-face {
+    font-family: 'MuseoSans-300';
+    src: url('../font/MuseoSans-300.otf');
+}
+
+@font-face {
+    font-family: 'MuseoSans-500';
+    src: url('../font/MuseoSans-500.otf');
+}
+
+@font-face {
+    font-family: 'MuseoSans-700';
+    src: url('../font/MuseoSans-700.otf');
+}
+
+@font-face {
+    font-family: 'MuseoSans-900';
+    src: url('../font/MuseoSans-900.otf');
+}
+
+
+/* GENERAL */
+html {
+    font-family: MuseoSans-500;
+    letter-spacing: 0.15em;
+    color: #000;
+    height: 100%;
+
+}
+
+body {
+    font-family: MuseoSans-500;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: MuseoSans-700;
+    font-weight: 100;
+    font-size:1.5rem;
+    text-transform: uppercase;
+}
+
+p{
+    font-family: MuseoSans-100;
+    font-weight: 100;
+    font-size:0.75rem;
+}
+
+
+button,.btn{
+    font-family: MuseoSans-500;
+    font-size:1rem;
+    color:#fff;
+    box-sizing: border-box;
+    border-style: none;
+    text-transform: uppercase;
+    padding: 1em;
+    border-radius: 0;
+}
+
+.btn-primary{
+    background-color:#000000;
+}
+
+.btn-secondary{
+    background-color:transparent;
+    border: .1rem solid #FFFFFF;
+}
+
+
+.btn-secondary:hover{
+    background-color: #FFFFFF;
+    color:#000000;
+    border: .1rem solid #FFFFFF;
+}
+
+label{
+    font-family: MuseoSans-700;
+    font-weight: 700;
+    font-size:0.75rem;
+    color:#000;
+}
+
+input{
+    font-family: MuseoSans-300;
+    font-weight: 300;
+    font-size:0.75rem;
+    border-style: solid;
+    border-color:#AAAAAA;
+    border-width: 1px;
+    color:#000;
+    text-transform: uppercase;
+}
+
+::-webkit-input-placeholder {
+    color:#808080;
+    text-transform: uppercase;
+}
+
+:-ms-input-placeholder {
+    color:#808080;
+    text-transform: uppercase;
+}
+
+::placeholder {
+    color:#808080;
+    text-transform: uppercase;
+}
+
+
+hr{
+    border: 0;
+    height: .05rem;
+    background: rgba(0,0,0,.1);
+    width: 100%;
+}
+
+a {
+    font-family: MuseoSans-100;
+    font-weight: 100;
+    font-size:0.75rem;
+    color: #000;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+/* END GENERAL */
+
+
+
+
+/* HEADER */
+
+header {
+    /*border-bottom: 2px solid #000 !important;*/
+    background-color: transparent;
+    padding: 1.75em 1.75em 0 1.75em;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+}
+
+.active {
+    background: rgba(255, 255, 255, 0.9);
+    color:#000000;
+}
+
+.black {
+    color:#000000;
+    fill: #000000!important;
+}
+
+.black:hover{
+    color:#000000;
+}
+
+.header__navigation {
+    flex: 1;
+}
+
+.header__logo {
+    flex: 1;
+
+    fill: #ffffff;
+    align-items: center;
+    justify-content: center;
+}
+
+header .logo .st0{fill:#FFFFFF;}
+
+.header__usernav {
+    flex: 1;
+}
+
+header ul li {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0em .5em;
+}
+
+header ul li:hover .dropdownmenu {
+    display: flex;
+}
+
+
+header ul li span {
+    font-weight: 300;
+}
+
+header ul li a {
+    font-family: MuseoSans-300;
+    font-weight: 300;
+    color: #ffff;
+    font-size:1rem;
+}
+
+header ul li a:hover{
+    color:#FFFFFF;
+}
+
+
+.logo {
+    min-width: 11.25rem;
+    max-width: 16.25rem;
+    height: auto;
+    vertical-align: middle;
+}
+
+
+.dropdownmenu {
+    position: absolute;
+    display: none;
+    padding: 1rem;
+    padding-top: 3rem;
+    background: rgba(255, 255, 255, 0.9);
+    left: 0;
+    right: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+.dropdownmenu ul li {
+    display: block;
+    position: relative;
+    padding-top: .5rem;
+    font-size: 1rem;
+}
+
+.dropdownmenu ul li a {
+    color:#000;
+}
+
+.dropdownmenu ul li a:hover{
+    color:#000;
+}
+
+.dropdownmenu .strong{
+    font-family: 'MuseoSans-700';
+}
+
+.dropdownmenu .sale{
+    font-family: 'MuseoSans-700';
+    color:#F00000;
+}
+
+.dropdownmenu .sale:hover{
+    color:#F00000;
+}
+
+#hamburger__menu,
+#cart__menu{
+    height: 2rem;
+    width: 2rem;
+
+}
+
+#hamburger__menu path,
+#cart__menu path {
+    stroke: #FFFFFF;
+}
+
+a#hamburger__menu:after {
+    content: "";
+    position: absolute;
+    left: -1em;
+    top: 0;
+    width: 50px;
+    height: 50px;
+}
+
+a#cart__menu:after {
+    content: "";
+    position: absolute;
+    right: -1em;
+    top: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.cart__amount {
+    background: #000;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    right:1.8rem;
+    top:1.5rem;
+    border-radius: 100%;
+    display: flex; /* or inline-flex */
+    align-items: center;
+    justify-content: center;
+    font-size:0.75rem;
+}
+
+.cart-count{
+    font-weight: 700;
+}
+
+
+.sidr-class-dropdownmenu li a:after {
+    position: absolute;
+    width: 100%;
+    color: #ff0000;
+    height: 30px;
+}
+
+/* END HEADER */
+
+
+
+
+
+
+/* BANNER */
+
+.hero-banner {
+    position: relative;
+}
+
+.hero-banner  .owl-slide-text {
+    text-align: center;
+    color:#fff;
+    font-family: 'MuseoSans-700';
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.hero-banner  .owl-slide-subtitle{
+    font-family: 'MuseoSans-300';
+    font-size: 1rem;
+}
+
+/* END BANNER */
+
+
+
+
+
+
+/* PRODUCTS CAROUSEL */
+.products .product .image-wrap {
+    position: relative;
+    background: #f7f7f7;
+}
+
+.products .product .product-label {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-transform: uppercase;
+    font-size: .8em;
+    padding: 0.5rem .8rem;
+    background: #F1F1F1;
+    color: #000000;
+    text-align: center;
+    font-family: 'MuseoSans-100';
+}
+
+.products .product .second {
+    display: none;
+}
+
+.products .product .info {
+    padding-top:1rem;
+    height: auto;
+    position: relative;
+    font-size:0.75rem;
+}
+
+.products .product .info a{
+    font-family: 'MuseoSans-500';
+    line-height: 20px;
+    font-size:0.75rem;
+}
+
+.products .product .info .price{
+    font-family: 'MuseoSans-700';
+    padding-top:.5rem;
+}
+
+
+.products .product .info .variants{
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    visibility: hidden;
+}
+
+.products .product .info .overlay{
+    position: absolute;
+    right: 0;
+
+}
+
+.products .product .info .variants li{
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: .1rem;
+    background-color:red;
+}
+
+.products .product:hover  .variants{
+    visibility: visible!important;
+}
+.products .product:hover .info-inner{
+    visibility: hidden!important;
+}
+/* END PRODUCT CAROUSEL
+
+
+
+
+/* START HIGHTLIGHT BLOKS */
+.hightlight-blok{
+    height: auto;
+    width: 100%;
+    position: relative;
+    background-color: #E7E7E7;
+    display: grid;
+    overflow: hidden;
+}
+
+.hightlight-blok .block-title{
+    width: 100%;
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.hightlight-blok .featured-image{
+    position: relative;
+    display: block;
+}
+
