@@ -99,7 +99,7 @@ function isScrolledIntoView(element) {
   var rect = element.getBoundingClientRect();
   var elemTop = rect.top;
   var elemBottom = rect.bottom;
-
+  var header = document.querySelector('header');
   // Only completely visible elements return true:
   var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
 
@@ -108,7 +108,10 @@ function isScrolledIntoView(element) {
 
   if (isVisible) {
     // console.log(scroll);
-    ChangeHeaderToWhite();
+    if(!header.classList.contains('active')){
+      ChangeHeaderToWhite();
+    }
+
   } else {
     // console.log('hero is not visible');
     ChangeHeaderToBlack(true);

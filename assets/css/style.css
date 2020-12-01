@@ -202,7 +202,7 @@ header ul li {
     text-transform: uppercase;
     font-size: 1em;
     font-weight: 500;
-    padding: 0em .5em;
+    padding: 0.1em .5em;
 }
 
 header ul li:hover .dropdownmenu {
@@ -228,22 +228,17 @@ header ul li a:hover{
 
 
 
-
-
-
-.actived {
+.active {
     background: rgba(255, 255, 255, 0.9);
     color:#000000;
 }
 
 .black {
-    transition: all 0.5s;
     color:#000000;
     fill: #000000!important;
 }
 
 .black--stroke{
-    transition: all 0.5s;
     stroke: #000000!important;
 }
 
@@ -268,7 +263,7 @@ header ul li a:hover{
     min-width: 11.25rem;
     max-width: 16.25rem;
     vertical-align: middle;
-    padding-top: 0.2rem;
+    padding-top: 0.25rem;
 }
 
 .header__logo .st0{
