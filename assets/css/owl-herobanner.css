@@ -3,100 +3,100 @@
     --main-black-color: black;
 }
 
-.hero-banner .static {
+.hero .static {
     position: static;
 }
 
-.hero-banner .cover {
+.hero .cover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.hero-banner .owl-carousel .item {
+.hero .owl-carousel .item {
     position: relative;
     height: 100vh;
     background-color: lightgray;
 }
 
-.hero-banner .owl-carousel .owl-slide-animated {
+.hero .owl-carousel .owl-slide-animated {
     transform: translateX(20px);
     opacity: 0;
     visibility: hidden;
     transition: all 0.05s;
 }
 
-.hero-banner .owl-carousel .owl-slide-animated.is-transitioned {
+.hero .owl-carousel .owl-slide-animated.is-transitioned {
     transform: none;
     opacity: 1;
     visibility: visible;
     transition: all 0.5s;
 }
 
-.hero-banner .owl-carousel .owl-slide-title.is-transitioned {
+.hero .owl-carousel .hero__title.is-transitioned {
     transition-delay: 0.2s;
 }
 
-.hero-banner .owl-carousel .owl-slide-subtitle.is-transitioned {
+.hero .owl-carousel .hero__subtitle.is-transitioned {
     transition-delay: 0.35s;
 }
 
-.hero-banner .owl-carousel .owl-slide-cta.is-transitioned {
+.hero .owl-carousel .owl-slide-cta.is-transitioned {
     /*transition-delay: 0.5s;*/
 }
 
-.hero-banner .owl-carousel .owl-dots,
-.hero-banner .owl-carousel .owl-nav {
+.hero .owl-carousel .owl-dots,
+.hero .owl-carousel .owl-nav {
     position: absolute;
     display: none;
 }
 
-.hero-banner .owl-carousel .owl-dots .owl-dot,
-.hero-banner .owl-carousel .owl-nav [class*="owl-"]:focus {
+.hero .owl-carousel .owl-dots .owl-dot,
+.hero .owl-carousel .owl-nav [class*="owl-"]:focus {
     outline: none;
 }
 
-.hero-banner .owl-carousel .owl-dots .owl-dot span {
+.hero .owl-carousel .owl-dots .owl-dot span {
     background: transparent;
     border: 1px solid var(--main-black-color);
     transition: all 0.2s ease;
 }
 
-.hero-banner .owl-carousel .owl-dots .owl-dot:hover span,
-.hero-banner .owl-carousel .owl-dots .owl-dot.active span {
+.hero .owl-carousel .owl-dots .owl-dot:hover span,
+.hero .owl-carousel .owl-dots .owl-dot.active span {
     background: var(--main-black-color);
 }
 
-.hero-banner .owl-carousel .owl-nav {
+.hero .owl-carousel .owl-nav {
     left: 50%;
     top: 10%;
     transform: translateX(-50%);
     margin: 0;
 }
 
-.hero-banner .owl-carousel .owl-nav svg {
+.hero .owl-carousel .owl-nav svg {
     opacity: 0.3;
     transition: opacity 0.3s;
 }
 
-.hero-banner .owl-carousel .owl-nav button:hover svg {
+.hero .owl-carousel .owl-nav button:hover svg {
     opacity: 1;
 }
 
-.hero-banner .owl-carousel .owl-nav [class*="owl-"]:hover {
+.hero .owl-carousel .owl-nav [class*="owl-"]:hover {
     background: transparent;
 }
 
-.hero-banner section {
+.hero section {
     display: none;
 }
 
 @media screen and (max-width: 575px) {
-    .hero-banner .owl-carousel .owl-nav {
+    .hero .owl-carousel .owl-nav {
         top: 5%;
     }
 
-    .hero-banner .owl-carousel .owl-nav svg {
+    .hero .owl-carousel .owl-nav svg {
         width: 24px;
         height: 24px;
     }

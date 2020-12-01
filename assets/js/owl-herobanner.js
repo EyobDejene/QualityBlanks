@@ -14,7 +14,7 @@ $(".owl-carousel").on("initialized.owl.carousel", () => {
 
 
 
-const $owlCarousel = $(".hero-banner .owl-carousel").owlCarousel({
+const $owlCarousel = $(".hero .owl-carousel").owlCarousel({
   items: 1,
   loop: false,
   nav: false,
@@ -32,7 +32,7 @@ $owlCarousel.on("changed.owl.carousel", e => {
   const $currentOwlItem = $(".owl-item").eq(e.item.index);
   $currentOwlItem.find(".owl-slide-animated").addClass("is-transitioned");
 
-  const $target = $currentOwlItem.find(".owl-slide-text");
+  const $target = $currentOwlItem.find(".hero__text");
   doDotsCalculations($target);
 });
 
@@ -48,7 +48,7 @@ $owlCarousel.on("resize.owl.carousel", () => {
 setOwlDotsPosition();
 
 function setOwlDotsPosition() {
-  const $target = $(".owl-item.active .owl-slide-text");
+  const $target = $(".owl-item.active .hero__text");
   doDotsCalculations($target);
 }
 
