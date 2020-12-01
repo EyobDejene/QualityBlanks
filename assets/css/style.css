@@ -43,7 +43,7 @@ body {
 h1, h2{
     font-family: MuseoSans-700;
     font-weight: 700;
-    font-size:1.5rem;
+    font-size:1.25rem;
     text-transform: uppercase;
 }
 
@@ -191,7 +191,10 @@ header {
     top: 0;
     z-index: 5;
     width: 100%;
+
 }
+
+
 
 
 header ul li {
@@ -228,20 +231,20 @@ header ul li a:hover{
 
 
 
-
-
-
-
-
-
-.active {
+.actived {
     background: rgba(255, 255, 255, 0.9);
     color:#000000;
 }
 
 .black {
+    transition: all 0.5s;
     color:#000000;
     fill: #000000!important;
+}
+
+.black--stroke{
+    transition: all 0.5s;
+    stroke: #000000!important;
 }
 
 .black:hover{
@@ -249,6 +252,11 @@ header ul li a:hover{
 }
 
 .header__navigation {
+    display: flex;
+}
+
+
+.main__menu{
     flex: 1;
 }
 
@@ -260,6 +268,7 @@ header ul li a:hover{
     min-width: 11.25rem;
     max-width: 16.25rem;
     vertical-align: middle;
+    padding-top: 0.2rem;
 }
 
 .header__logo .st0{
@@ -283,7 +292,7 @@ header ul li a:hover{
     right: 0;
     margin: 0;
     height: 100vh;
-    margin-top: .05rem;
+    margin-top: 0.25%;
 
 
 }
@@ -318,12 +327,17 @@ header ul li a:hover{
 
 /* end dropdown menu */
 
+.mobile__menu{
+    flex: 1;
+}
 
-#hamburger__menu,
-#cart__menu{
+#hamburger__menu{
     height: 2rem;
     width: 2rem;
-
+}
+#cart__menu{
+    height: 1.8rem;
+    width: 1.8rem;
 }
 
 #hamburger__menu path,
@@ -435,9 +449,12 @@ a#cart__menu:after {
     color: #000000;
     text-align: center;
     font-family: 'MuseoSans-100';
+    z-index: 1;
 }
 
 .product__image--second {
+    position: absolute;
+    top:0;
     display: none;
 }
 
@@ -456,7 +473,6 @@ a#cart__menu:after {
 
 .product__price{
     font-family: 'MuseoSans-700';
-    padding-top:.5rem;
 }
 
 
@@ -477,21 +493,33 @@ a#cart__menu:after {
     height: 1.2rem;
     width: 1.2rem;
     margin: .1rem;
-    background-color:red;
+    /*background-color:red;*/
 }
 
 .product:hover .product__variants{
+    visibility: visible;
+}
+
+.product:hover .product__inner{
+    visibility: hidden;
+}
+
+.visible{
     visibility: visible!important;
 }
-.product:hover .product__inner{
-    visibility: hidden!important;
+
+.product:hover .product__image--second{
+    display: block;
 }
+
+
+
 /* END PRODUCT CAROUSEL
 
 
 
 
-/* START HIGHTLIGHT BLOCKS */
+    /* START HIGHTLIGHT BLOCKS */
 .hightlightBlock{
     height: auto;
     width: 100%;
@@ -537,15 +565,15 @@ a#cart__menu:after {
 }
 
 .featuredProduct__inner{
-    padding:3rem;
+    /*padding:3rem;*/
 }
 
 .featuredProduct__usp{
-    display: contents;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
     list-style: none;
+
 }
 
 .featuredProduct__usp li {
@@ -553,6 +581,9 @@ a#cart__menu:after {
     font-size: 0.75rem;
     margin-top: 1.25rem;
     text-transform: uppercase;
+    flex-grow: 1;
+    justify-content: flex-start;
+
 }
 
 .featuredProduct__usp{
@@ -564,7 +595,7 @@ a#cart__menu:after {
 .featuredProduct__usp span{
     display: block;
     font-family: 'MuseoSans-300';
-    padding-top: .5rem;
+    padding-top: 0.625rem;
 }
 
 
@@ -608,7 +639,12 @@ footer li{
     text-transform: uppercase;
 }
 
-.footer__linkTitle ul li:first-child{
+footer ul li{
+    font-family: 'MuseoSans-300';
+    font-size: 0.75rem;
+}
+
+.footer__linkTitle {
     pointer-events: none;
     font-family: 'MuseoSans-700';
 }

@@ -1,0 +1,53 @@
+/* START HEADER */
+@media (max-width: 1200px) {
+    header{
+       padding: 1.75em 1em 0 1em;
+    }
+    .cart__amount{
+        right: .8rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+    header{
+        padding: 1.75em 0.9em 0 0.9em;
+    }
+    .cart__amount{
+        right: .8rem;
+    }
+
+}
+
+
+/* END HEADER */
+
+
+/* START FOOTER */
+    /** Small devices **/
+    @media (max-width: 520px) {
+
+        .footer__usp{
+            flex-wrap: unset;
+        }
+        .footer__usp li{
+            font-size: 0.75rem;
+        }
+
+    }
+
+
+    /** iphone 5 and smaller **/
+    @media (max-width: 320px) {
+
+        .footer__usp{
+            display: block;
+        }
+
+        .footer__usp li{
+            margin-left: 0;
+        }
+
+    }
+
+/* END FOOTER */

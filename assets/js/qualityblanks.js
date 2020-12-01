@@ -40,6 +40,16 @@ function ChangeHeaderToBlack(transparent){
   for (var i = 0; i < logo.length; i++) {
     logo[i].classList.add('black');
   }
+
+  //change mobile menu to black
+  document.querySelector("#hamburger__menu path").classList.add('black--stroke');
+  document.querySelector(".cart__amount").classList.add('white');
+  var cartIcon = document.querySelectorAll("#cart__menu path");
+  for (var i = 0; i < cartIcon.length; i++) {
+    cartIcon[i].classList.add('black--stroke');
+  }
+
+
 }
 
 
@@ -58,6 +68,14 @@ function ChangeHeaderToWhite(){
   for (var i = 0; i < logo.length; i++) {
     logo[i].classList.remove('black');
   }
+
+  //change mobile menu to default
+  document.querySelector("#hamburger__menu path").classList.remove('black--stroke');
+  document.querySelector(".cart__amount").classList.remove('white');
+  var cartIcon = document.querySelectorAll("#cart__menu path");
+  for (var i = 0; i < cartIcon.length; i++) {
+    cartIcon[i].classList.remove('black--stroke');
+  }
 }
 
 
@@ -68,16 +86,13 @@ function ChangeHeaderToWhite(){
  * @type {Element}
  */
 
-
-
-
-
+// check scroll position
 window.addEventListener('scroll', function() {
   var hero = document.querySelector('.hero');
   isScrolledIntoView(hero);
 });
 
-
+// check if element is in viewport
 function isScrolledIntoView(element) {
 
   var scroll = window.scrollY;
@@ -92,7 +107,7 @@ function isScrolledIntoView(element) {
   isVisible = elemTop < window.innerHeight && elemBottom >= 0;
 
   if (isVisible) {
-    console.log(scroll);
+    // console.log(scroll);
     ChangeHeaderToWhite();
   } else {
     // console.log('hero is not visible');
@@ -100,6 +115,59 @@ function isScrolledIntoView(element) {
   }
 
 }
+
+
+
+/**
+ * Change variant option bg color
+ * Gets variant url and change color of variant
+ * @type {Element}
+ */
+
+var products = document.querySelectorAll('.product');
+for (var i = 0; i < products.length; i++) {
+  products[i].addEventListener('pointerenter', checkVariant);
+}
+
+function checkVariant(){
+  var productVariant = this.querySelector('.product__variants');
+  var variantsColorList = [];
+  var variantsList = this.querySelectorAll('.product__variants li');
+
+
+
+  var productHasVariants = this.querySelector('.product__variants');
+  if(!productHasVariants){
+    this.querySelector('.product__inner').classList.add('visible');
+  }
+
+  if(productVariant)
+  {
+    var variants = productVariant.querySelectorAll('li a');
+    for (var i = 0; i < variants.length; i++) {
+      //get value of last dash in url
+      var variantURL = variants[i].getAttribute("href");
+      var uri = variantURL;
+      var lastslashindex = uri.lastIndexOf('-');
+      var result= uri.substring(lastslashindex  + 1);
+
+      //push values to array
+      variantsColorList.push(result);
+    }
+
+    changeVariantColor(variantsList,variantsColorList);
+  }
+}
+// set color of variant list on product
+function changeVariantColor(variantsList,variantsColorList){
+  for (var i = 0; i < variantsList.length; i++) {
+    variantsList[i].classList.add("bg-"+variantsColorList[i]);
+  }
+}
+
+
+
+
 
 
 
