@@ -314,6 +314,7 @@ function submitForm(e){
 checkIfHomePage();
 function checkIfHomePage() {
   let isHomepage = document.location.pathname === "/";
+  console.log(document.location.pathname);
   if(isHomepage){
     return true;
   }else{
