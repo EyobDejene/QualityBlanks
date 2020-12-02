@@ -4,11 +4,14 @@
  * Shows submenu if exists and changes header colors
  * @type {Element}
  */
-let header = document.querySelector('nav li');
-let navWithMenu = document.querySelectorAll('header nav ul li');
+//let header = document.querySelector('nav li');
+let navWithMenu = document.querySelectorAll('header li');
+console.log(navWithMenu);
 
 for (let i = 0; i < navWithMenu.length; i++) {
-  navWithMenu[i].addEventListener("mouseenter", checkHasMenu);
+  if(navWithMenu[i].parentNode.classList.contains('main__menu')){
+    navWithMenu[i].addEventListener("mouseenter", checkHasMenu);
+  }
 }
 
 function checkHasMenu(){
@@ -23,14 +26,6 @@ function checkHasMenu(){
 
 }
 
-// let navWithSubmenu = document.querySelector('nav li');
-// let nav = document.querySelector('nav ul li');
-//
-// navWithSubmenu.addEventListener("mouseenter",function() { document.querySelector('.dropdownmenu').classList.add('dropdownmenu--show')});
-// nav.addEventListener("mouseleave",function() { document.querySelector('.dropdownmenu').classList.remove('dropdownmenu--show')});
-
-header.addEventListener("mouseenter", headerOpen);
-header.addEventListener("mouseleave", headerClose);
 document.querySelector(".dropdownmenu").addEventListener("click", dropdownClose);
 
 function headerOpen(){
@@ -54,7 +49,7 @@ function headerClose(){
 function dropdownClose() {
   console.log('click');
   document.querySelector(".dropdownmenu").classList.remove('dropdownmenu__active');
-
+  ChangeHeaderToWhite();
 }
 
 
@@ -267,11 +262,6 @@ function activateSearchBar(event){
     searchBar.classList.toggle('fadeIn');
 
   }
-
-
-
-
-
 
 
 }
