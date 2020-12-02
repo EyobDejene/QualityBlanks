@@ -313,7 +313,7 @@ function submitForm(e){
  */
 checkIfHomePage();
 function checkIfHomePage() {
-  let isHomepage = document.location.pathname === "/";
+  let isHomepage = document.location.pathname === "/QualityBlanks/";
   console.log(document.location.pathname);
   if(isHomepage){
     return true;
