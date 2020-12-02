@@ -174,51 +174,51 @@ function isScrolledIntoView(element) {
 
 
 /**
- * Change letiant option bg color
+ * Change variant option bg color
  * Gets letiant url and change color of letiant
  * @type {Element}
  */
-
-let products = document.querySelectorAll('.product');
-for (let i = 0; i < products.length; i++) {
-  products[i].addEventListener('pointerenter', checkletiant);
+var products = document.querySelectorAll('.product');
+for (var i = 0; i < products.length; i++) {
+  products[i].addEventListener('pointerenter', checkVariant);
 }
 
-function checkletiant(){
-  let productletiant = this.querySelector('.product__letiants');
-  let letiantsColorList = [];
-  let letiantsList = this.querySelectorAll('.product__letiants li');
+function checkVariant(){
+  var productVariant = this.querySelector('.product__variants');
+  var variantsColorList = [];
+  var variantsList = this.querySelectorAll('.product__variants li');
 
 
 
-  let productHasletiants = this.querySelector('.product__letiants');
-  if(!productHasletiants){
+  var productHasVariants = this.querySelector('.product__variants');
+  if(!productHasVariants){
     this.querySelector('.product__inner').classList.add('visible');
   }
 
-  if(productletiant)
+  if(productVariant)
   {
-    let letiants = productletiant.querySelectorAll('li a');
-    for (let i = 0; i < letiants.length; i++) {
+    var variants = productVariant.querySelectorAll('li a');
+    for (var i = 0; i < variants.length; i++) {
       //get value of last dash in url
-      let letiantURL = letiants[i].getAttribute("href");
-      let uri = letiantURL;
-      let lastslashindex = uri.lastIndexOf('-');
-      let result= uri.substring(lastslashindex  + 1);
+      var variantURL = variants[i].getAttribute("href");
+      var uri = variantURL;
+      var lastslashindex = uri.lastIndexOf('-');
+      var result= uri.substring(lastslashindex  + 1);
 
       //push values to array
-      letiantsColorList.push(result);
+      variantsColorList.push(result);
     }
 
-    changeletiantColor(letiantsList,letiantsColorList);
+    changeVariantColor(variantsList,variantsColorList);
   }
 }
-// set color of letiant list on product
-function changeletiantColor(letiantsList,letiantsColorList){
-  for (let i = 0; i < letiantsList.length; i++) {
-    letiantsList[i].classList.add("bg-"+letiantsColorList[i]);
+// set color of variant list on product
+function changeVariantColor(variantsList,variantsColorList){
+  for (var i = 0; i < variantsList.length; i++) {
+    variantsList[i].classList.add("bg-"+variantsColorList[i]);
   }
 }
+
 
 
 
