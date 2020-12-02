@@ -8,6 +8,7 @@ let navWithMenu = document.querySelectorAll('header li');
 
 for (let i = 0; i < navWithMenu.length; i++) {
   navWithMenu[i].addEventListener("mouseenter", checkHasMenu);
+
 }
 
 function checkHasMenu(){
