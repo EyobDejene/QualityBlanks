@@ -4,11 +4,10 @@
  * @type {Element}
  */
 let header = document.querySelector('nav li');
-let navWithMenu = document.querySelectorAll('header li');
+let navWithMenu = document.querySelectorAll('header nav ul li');
 
 for (let i = 0; i < navWithMenu.length; i++) {
   navWithMenu[i].addEventListener("mouseenter", checkHasMenu);
-
 }
 
 function checkHasMenu(){
@@ -18,6 +17,7 @@ function checkHasMenu(){
    console.log('header open');
  }else{
    document.querySelector(".dropdownmenu").classList.remove('dropdownmenu__active');
+   headerClose();
  }
 
 }
