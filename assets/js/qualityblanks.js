@@ -1,3 +1,4 @@
+
 /**
  * Header functions
  * Shows submenu if exists and changes header colors
@@ -312,7 +313,7 @@ function submitForm(e){
  */
 checkIfHomePage();
 function checkIfHomePage() {
-  let isHomepage = document.location.pathname === "/QB-skeleton/index.html";
+  let isHomepage = document.location.pathname === "/";
   if(isHomepage){
     return true;
   }else{
