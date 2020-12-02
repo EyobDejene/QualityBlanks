@@ -1,0 +1,2 @@
+# QualityBlanks
+Redesign QB platform
