@@ -185,32 +185,32 @@ function isScrolledIntoView(element) {
  * Gets variant url and change color of variant
  * @type {Element}
  */
-var products = document.querySelectorAll('.product');
-for (var i = 0; i < products.length; i++) {
+let products = document.querySelectorAll('.product');
+for (let i = 0; i < products.length; i++) {
   products[i].addEventListener('pointerenter', checkVariant);
 }
 
 function checkVariant(){
-  var productVariant = this.querySelector('.product__variants');
-  var variantsColorList = [];
-  var variantsList = this.querySelectorAll('.product__variants li');
+  let productVariant = this.querySelector('.product__variants');
+  let variantsColorList = [];
+  let variantsList = this.querySelectorAll('.product__variants li');
 
 
 
-  var productHasVariants = this.querySelector('.product__variants');
+  let productHasVariants = this.querySelector('.product__variants');
   if(!productHasVariants){
     this.querySelector('.product__inner').classList.add('visible');
   }
 
   if(productVariant)
   {
-    var variants = productVariant.querySelectorAll('li a');
-    for (var i = 0; i < variants.length; i++) {
+    let variants = productVariant.querySelectorAll('li a');
+    for (let i = 0; i < variants.length; i++) {
       //get value of last dash in url
-      var variantURL = variants[i].getAttribute("href");
-      var uri = variantURL;
-      var lastslashindex = uri.lastIndexOf('-');
-      var result= uri.substring(lastslashindex  + 1);
+      let variantURL = variants[i].getAttribute("href");
+      let uri = variantURL;
+      let lastslashindex = uri.lastIndexOf('-');
+      let result= uri.substring(lastslashindex  + 1);
 
       //push values to array
       variantsColorList.push(result);
@@ -221,7 +221,7 @@ function checkVariant(){
 }
 // set color of variant list on product
 function changeVariantColor(variantsList,variantsColorList){
-  for (var i = 0; i < variantsList.length; i++) {
+  for (let i = 0; i < variantsList.length; i++) {
     variantsList[i].classList.add("bg-"+variantsColorList[i]);
   }
 }
