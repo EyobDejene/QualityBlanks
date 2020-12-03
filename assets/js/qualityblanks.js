@@ -7,6 +7,7 @@
 //let header = document.querySelector('nav li');
 let navWithMenu = document.querySelectorAll('header li');
 console.log(navWithMenu);
+let dropdownMenu  = document.querySelector(".dropdownmenu");
 
 for (let i = 0; i < navWithMenu.length; i++) {
   if(navWithMenu[i].parentNode.classList.contains('main__menu')){
@@ -17,44 +18,34 @@ for (let i = 0; i < navWithMenu.length; i++) {
 function checkHasMenu(){
  if(this.querySelector('.dropdownmenu')){
    headerOpen();
-   document.querySelector(".dropdownmenu").classList.add('dropdownmenu__active');
+   dropdownMenu.classList.add('dropdownmenu--active');
    console.log('header open');
  }else{
-   document.querySelector(".dropdownmenu").classList.remove('dropdownmenu__active');
+   dropdownMenu.classList.remove('dropdownmenu--active');
    headerClose();
  }
 
 }
 
-document.querySelector(".dropdownmenu").addEventListener("click", dropdownClose);
+dropdownMenu.addEventListener("click", dropdownClose);
 
 function headerOpen(){
-  if(checkIfHomePage()){
-    ChangeHeaderToBlack(false);
-  }else{
-    ChangeHeaderToWhite();
-    ChangeHeaderToBlack(false);
-  }
+  changeHeaderColors(false);
 }
 
 function headerClose(){
-  if(!checkIfHomePage()){
-    ChangeHeaderToWhite();
-    ChangeHeaderToBlack(true);
-  }else{
-    ChangeHeaderToWhite();
-  }
+  changeHeaderColors(true);
 }
 
 function dropdownClose() {
   console.log('click');
-  document.querySelector(".dropdownmenu").classList.remove('dropdownmenu__active');
-  ChangeHeaderToWhite();
+  dropdownMenu.classList.remove('dropdownmenu--active');
+  changeHeaderColors(true);
 }
 
 
 function ChangeHeaderToBlack(transparent){
-  document.querySelector(".dropdownmenu").style.display = '';
+  dropdownMenu.style.display = '';
   let header = document.querySelector('header');
   // add active state to header nav items
   let navLinks = document.querySelectorAll('header li a');
@@ -124,6 +115,27 @@ function ChangeHeaderToWhite(){
 }
 
 
+
+// function check if page homepage and change header colors
+function changeHeaderColors(state){
+  if(state) {
+    if (!checkIfHomePage()) {
+      ChangeHeaderToWhite();
+      ChangeHeaderToBlack(state);
+    } else {
+      ChangeHeaderToWhite();
+    }
+  }else{
+    if(checkIfHomePage()){
+      ChangeHeaderToBlack(state);
+    }else{
+      ChangeHeaderToWhite();
+      ChangeHeaderToBlack(state);
+    }
+  }
+}
+
+
 /**
  * Scrolling functions
  * checks if hero is in viewport change header colors
@@ -170,7 +182,7 @@ function isScrolledIntoView(element) {
 
 /**
  * Change variant option bg color
- * Gets letiant url and change color of letiant
+ * Gets variant url and change color of variant
  * @type {Element}
  */
 var products = document.querySelectorAll('.product');
@@ -303,7 +315,7 @@ function submitForm(e){
  */
 checkIfHomePage();
 function checkIfHomePage() {
-  let isHomepage = document.location.pathname === "/QualityBlanks/";
+  let isHomepage = document.querySelector('body').classList.contains('home');
   console.log(document.location.pathname);
   if(isHomepage){
     return true;
