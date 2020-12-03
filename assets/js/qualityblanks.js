@@ -190,16 +190,29 @@ for (let i = 0; i < products.length; i++) {
   products[i].addEventListener('pointerenter', checkVariant);
 }
 
-function checkVariant(){
-  let productVariant = this.querySelector('.product__variants');
+let productVariant = document.querySelector('.product__details');
+if(productVariant){
+  checkVariant(true);
+}
+
+function checkVariant(detail) {
+  let $this = this;
+  if (detail === true){
+    $this = document.querySelector('.product__details');
+  }
+  let productVariant = $this.querySelector('.product__variants');
   let variantsColorList = [];
-  let variantsList = this.querySelectorAll('.product__variants li');
+  let variantsList = $this.querySelectorAll('.product__variants li');
 
 
 
-  let productHasVariants = this.querySelector('.product__variants');
+  let productHasVariants = $this.querySelector('.product__variants');
   if(!productHasVariants){
-    this.querySelector('.product__inner').classList.add('visible');
+    let productInner = $this.querySelector('.product__inner');
+    if(productInner){
+      productInner.classList.add('visible');
+    }
+
   }
 
   if(productVariant)
@@ -329,3 +342,26 @@ function checkIfHomePage() {
 }
 
 
+
+/**
+ * Detail page accordion
+ * Detail page open / close accordion
+ * @type {Element}
+ */
+
+let accordion =  document.querySelector('.product__details__accordion');
+if(accordion){
+  CheckAccordion();
+}
+
+function CheckAccordion() {
+  let accordionItem = document.querySelectorAll('.product__details__accordion');
+  for (let i = 0; i < accordionItem.length; i++) {
+    accordionItem[i].addEventListener("click", accordionClose);
+  }
+}
+
+function accordionClose(){
+  console.log(this);
+  this.querySelector('.product__details__accordion__content').classList.toggle('product__details__accordion__content--show');
+}
