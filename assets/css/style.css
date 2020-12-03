@@ -763,6 +763,12 @@ a#cart__menu:after {
     color: #FFFFFF;
 }
 
+#AddToCartForm input[type="radio"]:checked+label {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+
 .product__details__accordion{
     padding-bottom: 1rem;
 }

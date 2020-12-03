@@ -6,7 +6,7 @@
  */
 //let header = document.querySelector('nav li');
 let navWithMenu = document.querySelectorAll('header li');
-console.log(navWithMenu);
+// console.log(navWithMenu);
 let dropdownMenu  = document.querySelector(".dropdownmenu");
 
 for (let i = 0; i < navWithMenu.length; i++) {
@@ -190,6 +190,31 @@ for (let i = 0; i < products.length; i++) {
   products[i].addEventListener('pointerenter', checkVariant);
 }
 
+// product touch end reset variant info
+for (let i = 0; i < products.length; i++) {
+  products[i].addEventListener('touchend', resetVariant);
+}
+
+// product touch start show variant info
+for (let i = 0; i < products.length; i++) {
+  products[i].addEventListener('touchstart', showVariant);
+}
+
+//redirect to product with hammerjs
+for (let i = 0; i < products.length; i++) {
+  // products[i].addEventListener('touchend', openUrl);
+  var mc = new Hammer.Manager(products[i]);
+  mc.add( new Hammer.Tap({ event: 'singletap' }) );
+  mc.on("singletap", function(e) {
+    let $this = e.target.offsetParent;
+    openUrl($this);
+  });
+
+}
+
+
+
+
 let productVariant = document.querySelector('.product__details');
 if(productVariant){
   checkVariant(true);
@@ -237,6 +262,33 @@ function changeVariantColor(variantsList,variantsColorList){
   for (let i = 0; i < variantsList.length; i++) {
     variantsList[i].classList.add("bg-"+variantsColorList[i]);
   }
+}
+
+
+// set product to default state
+function resetVariant(){
+  this.querySelector('.product .product__inner').style.visibility = 'visible';
+  if(this.querySelector('.product .product__variants')){
+    this.querySelector('.product .product__variants').style.visibility = 'hidden';
+  }
+  this.querySelector('.product .product__image--second').style.display = 'none';
+
+}
+
+// reset first image to default state
+function showVariant(){
+  this.querySelector('.product .product__inner').style.visibility = 'hidden';
+  if(this.querySelector('.product .product__variants')){
+    this.querySelector('.product .product__variants').style.visibility = 'visible';
+  }
+  this.querySelector('.product .product__image--second').style.display = 'block';
+
+}
+
+// function to call when product is clicked
+function openUrl($this){
+  let productUrl = $this.querySelector('.product a').getAttribute("href");
+  window.location.href = productUrl;
 }
 
 
