@@ -6,7 +6,8 @@
  */
 //let header = document.querySelector('nav li');
 let navWithMenu = document.querySelectorAll('header li');
-console.log(navWithMenu);
+// console.log(navWithMenu);
+let dropdownMenu  = document.querySelector(".dropdownmenu");
 
 for (let i = 0; i < navWithMenu.length; i++) {
   if(navWithMenu[i].parentNode.classList.contains('main__menu')){
@@ -17,44 +18,34 @@ for (let i = 0; i < navWithMenu.length; i++) {
 function checkHasMenu(){
  if(this.querySelector('.dropdownmenu')){
    headerOpen();
-   document.querySelector(".dropdownmenu").classList.add('dropdownmenu__active');
+   dropdownMenu.classList.add('dropdownmenu--active');
    console.log('header open');
  }else{
-   document.querySelector(".dropdownmenu").classList.remove('dropdownmenu__active');
+   dropdownMenu.classList.remove('dropdownmenu--active');
    headerClose();
  }
 
 }
 
-document.querySelector(".dropdownmenu").addEventListener("click", dropdownClose);
+dropdownMenu.addEventListener("click", dropdownClose);
 
 function headerOpen(){
-  if(checkIfHomePage()){
-    ChangeHeaderToBlack(false);
-  }else{
-    ChangeHeaderToWhite();
-    ChangeHeaderToBlack(false);
-  }
+  changeHeaderColors(false);
 }
 
 function headerClose(){
-  if(!checkIfHomePage()){
-    ChangeHeaderToWhite();
-    ChangeHeaderToBlack(true);
-  }else{
-    ChangeHeaderToWhite();
-  }
+  changeHeaderColors(true);
 }
 
 function dropdownClose() {
   console.log('click');
-  document.querySelector(".dropdownmenu").classList.remove('dropdownmenu__active');
-  ChangeHeaderToWhite();
+  dropdownMenu.classList.remove('dropdownmenu--active');
+  changeHeaderColors(true);
 }
 
 
 function ChangeHeaderToBlack(transparent){
-  document.querySelector(".dropdownmenu").style.display = '';
+  dropdownMenu.style.display = '';
   let header = document.querySelector('header');
   // add active state to header nav items
   let navLinks = document.querySelectorAll('header li a');
@@ -124,6 +115,27 @@ function ChangeHeaderToWhite(){
 }
 
 
+
+// function check if page homepage and change header colors
+function changeHeaderColors(state){
+  if(state) {
+    if (!checkIfHomePage()) {
+      ChangeHeaderToWhite();
+      ChangeHeaderToBlack(state);
+    } else {
+      ChangeHeaderToWhite();
+    }
+  }else{
+    if(checkIfHomePage()){
+      ChangeHeaderToBlack(state);
+    }else{
+      ChangeHeaderToWhite();
+      ChangeHeaderToBlack(state);
+    }
+  }
+}
+
+
 /**
  * Scrolling functions
  * checks if hero is in viewport change header colors
@@ -170,35 +182,73 @@ function isScrolledIntoView(element) {
 
 /**
  * Change variant option bg color
- * Gets letiant url and change color of letiant
+ * Gets variant url and change color of variant
  * @type {Element}
  */
-var products = document.querySelectorAll('.product');
-for (var i = 0; i < products.length; i++) {
+let products = document.querySelectorAll('.product');
+for (let i = 0; i < products.length; i++) {
   products[i].addEventListener('pointerenter', checkVariant);
 }
 
-function checkVariant(){
-  var productVariant = this.querySelector('.product__variants');
-  var variantsColorList = [];
-  var variantsList = this.querySelectorAll('.product__variants li');
+// product touch end reset variant info
+for (let i = 0; i < products.length; i++) {
+  products[i].addEventListener('touchend', resetVariant);
+}
+
+// product touch start show variant info
+for (let i = 0; i < products.length; i++) {
+  products[i].addEventListener('touchstart', showVariant);
+}
+
+//redirect to product with hammerjs
+for (let i = 0; i < products.length; i++) {
+  // products[i].addEventListener('touchend', openUrl);
+  var mc = new Hammer.Manager(products[i]);
+  mc.add( new Hammer.Tap({ event: 'singletap' }) );
+  mc.on("singletap", function(e) {
+    let $this = e.target.offsetParent;
+    openUrl($this);
+  });
+
+}
 
 
 
-  var productHasVariants = this.querySelector('.product__variants');
+
+let productVariant = document.querySelector('.product__details');
+if(productVariant){
+  checkVariant(true);
+}
+
+function checkVariant(detail) {
+  let $this = this;
+  if (detail === true){
+    $this = document.querySelector('.product__details');
+  }
+  let productVariant = $this.querySelector('.product__variants');
+  let variantsColorList = [];
+  let variantsList = $this.querySelectorAll('.product__variants li');
+
+
+
+  let productHasVariants = $this.querySelector('.product__variants');
   if(!productHasVariants){
-    this.querySelector('.product__inner').classList.add('visible');
+    let productInner = $this.querySelector('.product__inner');
+    if(productInner){
+      productInner.classList.add('visible');
+    }
+
   }
 
   if(productVariant)
   {
-    var variants = productVariant.querySelectorAll('li a');
-    for (var i = 0; i < variants.length; i++) {
+    let variants = productVariant.querySelectorAll('li a');
+    for (let i = 0; i < variants.length; i++) {
       //get value of last dash in url
-      var variantURL = variants[i].getAttribute("href");
-      var uri = variantURL;
-      var lastslashindex = uri.lastIndexOf('-');
-      var result= uri.substring(lastslashindex  + 1);
+      let variantURL = variants[i].getAttribute("href");
+      let uri = variantURL;
+      let lastslashindex = uri.lastIndexOf('-');
+      let result= uri.substring(lastslashindex  + 1);
 
       //push values to array
       variantsColorList.push(result);
@@ -209,9 +259,36 @@ function checkVariant(){
 }
 // set color of variant list on product
 function changeVariantColor(variantsList,variantsColorList){
-  for (var i = 0; i < variantsList.length; i++) {
+  for (let i = 0; i < variantsList.length; i++) {
     variantsList[i].classList.add("bg-"+variantsColorList[i]);
   }
+}
+
+
+// set product to default state
+function resetVariant(){
+  this.querySelector('.product .product__inner').style.visibility = 'visible';
+  if(this.querySelector('.product .product__variants')){
+    this.querySelector('.product .product__variants').style.visibility = 'hidden';
+  }
+  this.querySelector('.product .product__image--second').style.display = 'none';
+
+}
+
+// reset first image to default state
+function showVariant(){
+  this.querySelector('.product .product__inner').style.visibility = 'hidden';
+  if(this.querySelector('.product .product__variants')){
+    this.querySelector('.product .product__variants').style.visibility = 'visible';
+  }
+  this.querySelector('.product .product__image--second').style.display = 'block';
+
+}
+
+// function to call when product is clicked
+function openUrl($this){
+  let productUrl = $this.querySelector('.product a').getAttribute("href");
+  window.location.href = productUrl;
 }
 
 
@@ -303,7 +380,7 @@ function submitForm(e){
  */
 checkIfHomePage();
 function checkIfHomePage() {
-  let isHomepage = document.location.pathname === "/QualityBlanks/";
+  let isHomepage = document.querySelector('body').classList.contains('home');
   console.log(document.location.pathname);
   if(isHomepage){
     return true;
@@ -317,3 +394,26 @@ function checkIfHomePage() {
 }
 
 
+
+/**
+ * Detail page accordion
+ * Detail page open / close accordion
+ * @type {Element}
+ */
+
+let accordion =  document.querySelector('.product__details__accordion');
+if(accordion){
+  CheckAccordion();
+}
+
+function CheckAccordion() {
+  let accordionItem = document.querySelectorAll('.product__details__accordion');
+  for (let i = 0; i < accordionItem.length; i++) {
+    accordionItem[i].addEventListener("click", accordionClose);
+  }
+}
+
+function accordionClose(){
+  console.log(this);
+  this.querySelector('.product__details__accordion__content').classList.toggle('product__details__accordion__content--show');
+}
