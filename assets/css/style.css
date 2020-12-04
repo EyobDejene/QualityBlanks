@@ -80,7 +80,8 @@ input{
 textarea,
 input[type="text"],
 input[type="button"],
-input[type="submit"] {
+input[type="submit"],
+input[type="number"]{
     -webkit-appearance: none;
     border-radius: 0;
 }
@@ -114,6 +115,22 @@ input{
     color:#000;
     text-transform: uppercase;
 }
+
+
+table th{
+    font-family: MuseoSans-700;
+    font-weight: 700;
+    font-size:0.75rem;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+}
+
+table tr {
+    border-bottom:.1rem solid  rgba(0,0,0,.1);
+    padding-bottom: .5rem;
+}
+
+
 
 
 .btn-primary{
@@ -986,13 +1003,13 @@ footer ul li{
 
 footer .logo{
     width: 12rem;
+    max-width: 100%;
 }
 
 footer .footer__paymentmethods{
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    justify-content: flex-end;
 }
 
 footer .footer__paymentmethods li{
@@ -1002,9 +1019,66 @@ footer .footer__paymentmethods li{
 
 footer .footer__paymentmethods img{
     width: 1.5rem;
+    max-width: 100%;
     height: auto;
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 }
 
 /* END FOOTER */
+
+
+.cart .cart__product{
+    width: 8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.cart .product__price,
+.cart .product__totalprice{
+    font-family: MuseoSans-100;
+}
+
+.cart .product__variant{
+    text-transform: uppercase;
+    padding-top:.5rem;
+}
+
+.cart .product__size{
+    margin-left: .5rem;
+}
+
+.cart .product__inner{
+    display: grid;
+}
+
+.cart .product__quantity{
+    padding: 0.5rem;
+    width: 2rem;
+    text-align: center;
+    background-color: rgba(0,0,0,.1);
+    font-family: MuseoSans-100;
+    border-style: none;
+}
+
+.cart .product__style{
+    font-family: MuseoSans-700;
+}
+
+.cart .cart__checkout{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+.cart .cart__subtotal{
+    font-family: MuseoSans-700;
+}
+
+.cart .subtotal__price{
+    font-family: MuseoSans-500;
+    padding-left: 1rem;
+}
+
+
