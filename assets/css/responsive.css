@@ -18,12 +18,33 @@
     }
 
 }
-
-
 /* END HEADER */
 
 
+/* START CART */
+
+
+@media (max-width: 768px) {
+    .cart .cart__product{
+        width: 3rem;
+
+    }
+
+    .cart td{
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+
+/* END CART */
+
+
+
+
+
 /* START FOOTER */
+
     /** Small devices **/
     @media (max-width: 520px) {
 
