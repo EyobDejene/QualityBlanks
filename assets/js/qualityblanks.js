@@ -20,6 +20,7 @@ function checkHasMenu(){
    headerOpen();
    dropdownMenu.classList.add('dropdownmenu--active');
    console.log('header open');
+
  }else{
    dropdownMenu.classList.remove('dropdownmenu--active');
    headerClose();
@@ -53,26 +54,27 @@ function ChangeHeaderToBlack(transparent){
     header.classList.add('active');
   }
   for (let i = 0; i < navLinks.length; i++) {
-    navLinks[i].classList.add('black');
+    navLinks[i].classList.add('header__navigation--black');
+    navLinks[i].classList.remove('header__navigation--white');
   }
 
   // change logo color black
   let logo = document.querySelectorAll('.logo .st0');
   for (let i = 0; i < logo.length; i++) {
-    logo[i].classList.add('black');
+    logo[i].classList.add('header__navigation--black');
   }
 
 
   // change searchbar to black
-  document.querySelector(".header__searchbar input").classList.add('black');
-  document.querySelector(".header__searchbar .input__group--addon").classList.add('black');
+  document.querySelector(".header__searchbar input").classList.add('header__navigation--black');
+  document.querySelector(".header__searchbar .input__group--addon").classList.add('header__navigation--black');
 
   //change loupe to black
-  document.querySelector(".header__loupe .st0").classList.add('black');
+  document.querySelector(".header__loupe .st0").classList.add('header__navigation--black');
 
   //change mobile menu to black
   document.querySelector("#hamburger__menu path").classList.add('black--stroke');
-  document.querySelector(".cart__amount").classList.add('white');
+  document.querySelector(".cart__amount").classList.add('header__navigation--white');
   let cartIcon = document.querySelectorAll("#cart__menu path");
   for (let i = 0; i < cartIcon.length; i++) {
     cartIcon[i].classList.add('black--stroke');
@@ -89,25 +91,27 @@ function ChangeHeaderToWhite(){
   // remove active state to header nav items
   let navLinks = document.querySelectorAll('header li a');
   for (let i = 0; i < navLinks.length; i++) {
-    navLinks[i].classList.remove('black');
+    navLinks[i].classList.remove('header__navigation--black');
+    navLinks[i].classList.add('header__navigation--white');
   }
 
   // change logo color to default
   let logo = document.querySelectorAll('.logo .st0');
   for (let i = 0; i < logo.length; i++) {
-    logo[i].classList.remove('black');
+    logo[i].classList.remove('header__navigation--black');
+    logo[i].classList.add('header__navigation--white');
   }
 
   // change searchbar to default
-  document.querySelector(".header__searchbar input").classList.remove('black');
-  document.querySelector(".header__searchbar .input__group--addon").classList.remove('black');
+  document.querySelector(".header__searchbar input").classList.remove('header__navigation--black');
+  document.querySelector(".header__searchbar .input__group--addon").classList.remove('header__navigation--black');
 
   //change loupe to black
-  document.querySelector(".header__loupe .st0").classList.remove('black');
+  document.querySelector(".header__loupe .st0").classList.remove('header__navigation--black');
 
   //change mobile menu to default
   document.querySelector("#hamburger__menu path").classList.remove('black--stroke');
-  document.querySelector(".cart__amount").classList.remove('white');
+  document.querySelector(".cart__amount").classList.remove('header__navigation--white');
   let cartIcon = document.querySelectorAll("#cart__menu path");
   for (let i = 0; i < cartIcon.length; i++) {
     cartIcon[i].classList.remove('black--stroke');
@@ -124,6 +128,7 @@ function changeHeaderColors(state){
       ChangeHeaderToBlack(state);
     } else {
       ChangeHeaderToWhite();
+      console.log('add white');
     }
   }else{
     if(checkIfHomePage()){
@@ -174,6 +179,7 @@ function isScrolledIntoView(element) {
   } else {
     // console.log('hero is not visible');
     ChangeHeaderToBlack(true);
+
   }
 
 }
@@ -293,7 +299,6 @@ function openUrl($this){
 
 
 
-
 /**
  * Activate searchbar
  * When user clicks on search logo will
@@ -400,20 +405,103 @@ function checkIfHomePage() {
  * Detail page open / close accordion
  * @type {Element}
  */
-
-let accordion =  document.querySelector('.product__details__accordion');
+let accordion =  document.querySelector('.accordion');
 if(accordion){
   CheckAccordion();
 }
 
-function CheckAccordion() {
-  let accordionItem = document.querySelectorAll('.product__details__accordion');
-  for (let i = 0; i < accordionItem.length; i++) {
-    accordionItem[i].addEventListener("click", accordionClose);
+function CheckAccordion(){
+  console.log('click accordion');
+ let accordionItem = document.querySelectorAll('.accordion');
+ for (let i = 0; i < accordionItem.length; i++) {
+  accordionItem[i].addEventListener("click", accordionToggle);
   }
 }
 
-function accordionClose(){
+function accordionToggle(){
   console.log(this);
-  this.querySelector('.product__details__accordion__content').classList.toggle('product__details__accordion__content--show');
+  this.querySelector('.accordion__content').classList.toggle('accordion__content--show');
 }
+
+
+
+/**
+ * Cart page functions
+ * remove products from cart and add quantity of products
+ * @type {Element}
+ */
+
+let removeBtn = document.querySelectorAll('.product__remove');
+
+if(removeBtn){
+  for (let i = 0; i < removeBtn.length; i++) {
+    removeBtn[i].addEventListener("click", removeProductFromCart);
+  }
+}else{
+  showContinueShoppingBtn();
+}
+
+function removeProductFromCart(){
+  event.preventDefault();
+  this.parentNode.parentNode.remove();
+  checkProductsInCart();
+}
+
+function checkProductsInCart(){
+  let cartProducts = document.querySelectorAll('.cart__product');
+  console.log(cartProducts.length);
+  if(cartProducts.length < 1 ){
+    showContinueShoppingBtn();
+  }
+}
+
+function showContinueShoppingBtn(){
+  location.reload();
+}
+
+
+
+
+
+
+/**
+ * Content page functions
+ * read content data of request and place in content
+ * @type {Element}
+ */
+
+let contentNavItems = document.querySelectorAll('aside ul li a');
+
+for (let i = 0; i < contentNavItems.length; i++) {
+  contentNavItems[i].addEventListener('click',getContentData)
+}
+
+function getContentData(){
+  // event.preventDefault();//check if page contains accordion
+  // let url = this.getAttribute('href');
+  // let navItem = this;
+  // if(url) {
+  //   let xhttp = new XMLHttpRequest(contentNavItems,navItem);
+  //   xhttp.onreadystatechange = function() {
+  //     if (this.readyState == 4 && this.status == 200) {
+  //       for (let i = 0; i < contentNavItems.length; i++) {
+  //         contentNavItems[i].classList.remove('active');
+  //       }
+  //       navItem.classList.add('active');
+  //       let contentTitle = navItem.innerHTML;
+  //       let content = document.querySelector(".article__content");
+  //       document.querySelector('article h1').innerHTML = contentTitle;
+  //       content.innerHTML = this.responseText;
+  //       console.log("Load was performed.");
+  //     }else if(!this.status == 200){
+  //       console.log("Content can't be loaded.");
+  //     }
+  //   };
+  //   xhttp.open("GET", url, true);
+  //   xhttp.send(contentNavItems,navItem);
+  // }
+
+}
+
+
+
