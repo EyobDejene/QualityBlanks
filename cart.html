@@ -163,10 +163,10 @@
         <div class="header__usernav">
             <ul class="text-right main__menu">
                 <li class="d-none d-xl-inline-block header__usernav--search"><a href="#"><span>+</span>search</a></li>
-                <li class="d-none d-xl-inline-block"><a href="/account"><span>+</span>account</a></li>
-                <li class="d-none d-xl-inline-block"><a href="/cart"><span>+</span>cart (<span class="cart__count">0</span>)</a></li>
+                <li class="d-none d-xl-inline-block"><a href="account.html"><span>+</span>account</a></li>
+                <li class="d-none d-xl-inline-block"><a href="cart.html"><span>+</span>cart (<span class="cart__count">0</span>)</a></li>
                 <li class="d-block d-xl-none">
-                    <a href="/cart">
+                    <a href="cart.html">
                         <svg id="cart__menu" viewBox="0 0 19 22" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
@@ -202,8 +202,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-lg-6 col-md-10">
-                <div class="title-featured">
-                    <h1 class="title">Shopping cart</h1>
+                <div class="page__title">
+                    <h1>Shopping cart</h1>
+                    <!--<p>Your shopping cart is empty.</p>-->
+                    <!--<a href="/collections/all" class="btn btn-link col-12 col-lg-4 col-md-4">Continue shopping</a>-->
                 </div>
             </div>
         </div>
@@ -257,7 +259,7 @@
                                    <div class="product__totalprice"><span class="product__new-price"><span
                                            class="product__currency">€</span>150,00</span></div>
                                </td>
-                               <td>x</td>
+                               <td><a href="/cart/product1" class="product__remove">x</a></td>
                            </tr>
                            <!-- end product row -->
 
@@ -297,7 +299,7 @@
                                <td class="d-none d-lg-table-cell d-md-table-cell">
                                    <div class="product__totalprice"><span class="product__new-price">150,00</span></div>
                                </td>
-                               <td>x</td>
+                               <td><a href="/cart/product2" class="product__remove">x</a></td>
                            </tr>
                            <!-- end product row -->
                        </table>
@@ -335,10 +337,10 @@
 
 <section class="pt-5 pb-5">
     <div class="container-fluid">
-        <div class="row pb-5">
+        <div class="row pb-3">
             <div class="col-12">
-                <div class="title-featured">
-                    <h2 class="title">Others also added this to their cart</h2>
+                <div class="component__title">
+                    <h2>Others also added this to their cart</h2>
                 </div>
             </div>
         </div>

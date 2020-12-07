@@ -47,16 +47,29 @@ h1, h2{
     text-transform: uppercase;
 }
 
-h3,h4, h5, h6{
+h3,h4 {
     font-family: MuseoSans-500;
     font-weight: 500;
     text-transform: uppercase;
+}
+
+h5, h6{
+    font-family: MuseoSans-700;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
 }
 
 
 p{
     font-family: MuseoSans-100;
     font-weight: 100;
+    font-size:0.75rem;
+}
+
+b{
+    font-family: MuseoSans-700;
+    font-weight: 700;
     font-size:0.75rem;
 }
 
@@ -142,6 +155,15 @@ table tr {
     border: .1rem solid #FFFFFF;
 }
 
+.btn-link{
+    background-color:transparent;
+    border: .1rem solid rgba(0,0,0,.1);
+    color: #000000;
+    font-size: 0.75rem;
+    /*text-align: left;*/
+    /*padding: .1rem;*/
+}
+
 .cta,.input__space{
     padding-top: 1.25rem;
 }
@@ -189,6 +211,10 @@ a {
     color: #000;
 }
 
+a:hover{
+    color: #000000!important;
+}
+
 ul {
     padding-left: 0;
     margin-bottom: 0;
@@ -202,7 +228,50 @@ video{
     z-index: 1;
 }
 
+
+
+aside{
+    position: sticky;
+    top: 7rem;
+    align-self: flex-start;
+}
+
+aside ul{
+    list-style-type: none;
+}
+
+aside ul li a{
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 500;
+    padding-top: .5rem;
+}
+
+aside ul li{
+    padding-top: 1rem;
+}
+
+aside ul li .active{
+    font-family: MuseoSans-700;
+    font-weight: 700;
+}
+
+
 /* END GENERAL */
+
+
+
+/** START LOOKBOOK **/
+
+
+
+/** START ABOUT **/
+.content__col{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 
 
 
@@ -220,7 +289,13 @@ header {
 
 }
 
+/* artcicle header */
 
+article header{
+    position: relative;
+    padding: 0;
+    z-index: 0;
+}
 
 
 header ul li {
@@ -234,26 +309,26 @@ header ul li {
 /*header ul li:hover .dropdownmenu {*/
     /*display: flex;*/
 /*}*/
+
 .dropdownmenu--active{
     display: flex!important;
 }
 
 header ul li span {
+    font-family: MuseoSans-300;
     font-weight: 300;
 }
 
 header ul li a {
     font-family: MuseoSans-300;
     font-weight: 300;
-    color: #ffff;
     font-size:1rem;
-}
-
-header ul li a:hover{
     color:#FFFFFF;
 }
 
-
+header ul li a:hover .header__navigation--black{
+    color:#000000!important;
+}
 
 
 .active {
@@ -261,7 +336,7 @@ header ul li a:hover{
     color:#000000;
 }
 
-.black {
+.header__navigation--black{
     color:#000000!important;
     fill: #000000!important;
     border-color:#000000!important;
@@ -272,8 +347,12 @@ header ul li a:hover{
     stroke: #000000!important;
 }
 
-.black:hover{
-    color:#000000;
+.header__navigation--black:hover{
+    color:#000000!important;
+}
+
+.header__navigation--white:hover{
+    color:#FFFFFF!important;
 }
 
 .header__navigation {
@@ -363,7 +442,6 @@ header ul li a:hover{
 .header__searchbar .black:-ms-input-placeholder{
     color: #000000!important;
 }
-
 
 
 
@@ -786,11 +864,11 @@ a#cart__menu:after {
 }
 
 
-.product__details__accordion{
+.accordion{
     padding-bottom: 1rem;
 }
 
-.product__details__accordion__content{
+.accordion__content{
     opacity: 0;
     visibility: hidden;
     height: 0;
@@ -801,13 +879,13 @@ a#cart__menu:after {
     transition: all .5s ease-in-out;
 }
 
-.product__details__accordion__content--show{
+.accordion__content--show{
     opacity: 1;
     visibility: visible;
     height: auto;
 }
 
-.product__details__accordion__title {
+.accordion__title {
     text-transform: uppercase;
     border-bottom: solid .05rem rgba(0,0,0,.1);
     padding-bottom: 0.75rem;
@@ -1028,6 +1106,11 @@ footer .footer__paymentmethods img{
 /* END FOOTER */
 
 
+
+
+
+
+/* START CART */
 .cart .cart__product{
     width: 8rem;
     padding-top: 1rem;
@@ -1058,12 +1141,23 @@ footer .footer__paymentmethods img{
     text-align: center;
     background-color: rgba(0,0,0,.1);
     font-family: MuseoSans-100;
+    font-weight: 100;
     border-style: none;
 }
 
 .cart .product__style{
     font-family: MuseoSans-700;
+    font-weight: 700;
 }
+
+.cart .product__remove{
+    font-family: MuseoSans-700;
+    font-weight: 100;
+    /*padding: .5rem;*/
+    font-size: 0.75rem;
+}
+
+
 
 .cart .cart__checkout{
     display: flex;
@@ -1074,11 +1168,38 @@ footer .footer__paymentmethods img{
 
 .cart .cart__subtotal{
     font-family: MuseoSans-700;
+    font-weight: 700;
 }
 
 .cart .subtotal__price{
     font-family: MuseoSans-500;
+    font-weight: 500;
     padding-left: 1rem;
 }
 
+/* END CART */
 
+
+
+/** CONTENT PAGE **/
+article .accordion{
+    padding-top: 2rem;
+}
+
+
+
+
+
+/** COMPONTENT PRODUCTS STYLING **/
+.component__title{
+    display: flex;
+}
+
+.component__title h2{
+    flex: 1;
+}
+
+.component__title a{
+    font-size: 1rem;
+    text-transform: uppercase;
+}
