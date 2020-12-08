@@ -47,10 +47,17 @@ h1, h2{
     text-transform: uppercase;
 }
 
-h3,h4 {
+h3 {
     font-family: MuseoSans-500;
     font-weight: 500;
     text-transform: uppercase;
+}
+
+h4 {
+    font-family: MuseoSans-500;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1rem;
 }
 
 h5, h6{
@@ -85,16 +92,21 @@ form{
     width: 100%;
 }
 
-input{
+input,
+select{
     padding: .8rem;
     width: 100%;
 }
 
 textarea,
+select,
 input[type="text"],
 input[type="button"],
 input[type="submit"],
-input[type="number"]{
+input[type="number"],
+input[type="checkbox"],
+input[type="password"],
+input[type="tel"]{
     -webkit-appearance: none;
     border-radius: 0;
 }
@@ -116,9 +128,18 @@ label{
     font-weight: 700;
     font-size:0.75rem;
     color:#000;
+    text-transform: uppercase;
 }
 
-input{
+label p{
+    text-transform: capitalize;
+    margin-top: revert;
+    margin-bottom: revert;
+}
+
+
+input,
+select{
     font-family: MuseoSans-300;
     font-weight: 300;
     font-size:0.75rem;
@@ -129,6 +150,10 @@ input{
     text-transform: uppercase;
 }
 
+table{
+    width: 100%;
+    margin-top: 2rem;
+}
 
 table th{
     font-family: MuseoSans-700;
@@ -143,7 +168,18 @@ table tr {
     padding-bottom: .5rem;
 }
 
+select{
+    width: 100%;
+}
 
+
+.selector:after {
+    content: '\25be ';
+    position: absolute;
+    right:1rem;
+    top:2.8rem;
+    color: rgba(0,0,0,.5);
+}
 
 
 .btn-primary{
@@ -509,7 +545,7 @@ input:focus{
     font-family: MuseoSans-700;
 }
 
-.dropdownmenu .sale{
+.sale{
     font-family: MuseoSans-700;
     color:#F00000!important;
 }
@@ -574,12 +610,58 @@ a#cart__menu:after {
     font-weight: 700;
 }
 
-/*.sidr-class-dropdownmenu li a:after {*/
-    /*position: absolute;*/
-    /*width: 100%;*/
-    /*color: #ff0000;*/
-    /*height: 30px;*/
-/*}*/
+
+
+/** offcanvas menu **/
+.offcanvas__menu{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: -1;
+    overflow-x: scroll;
+}
+
+.offcanvas__inner{
+    width: 100%;
+    height: 100%;
+    padding: 3rem 1rem;
+    display: table;
+}
+
+
+.offcanvas__inner .sale{
+    font-family: MuseoSans-900;
+    font-weight: 900;
+    font-size: 0.75rem;
+}
+
+.offcanvas__inner .accordion__content ul{
+    padding-top: 1rem;
+}
+
+.offcanvas__inner  .accordion__content ul li{
+    display: block;
+    padding: .5em 0em;
+}
+
+.shop__languages__currencies{
+    display: table-footer-group;
+}
+
+.shop__languages__currencies li{
+    padding:.5rem 0rem;
+    display: block;
+}
+
+.shop__languages__currencies li a{
+    margin-right: 1rem;
+}
+/** End offcanvas menu **/
+
+
 
 /* END HEADER */
 
@@ -1186,11 +1268,87 @@ article .accordion{
     padding-top: 2rem;
 }
 
+/** END CONTENT PAGE **/
 
 
 
 
-/** COMPONTENT PRODUCTS STYLING **/
+/** START REGISTER PAGE **/
+form .checkbox__label{
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 49px;
+    margin-right: 0.625rem;
+    text-align: center;
+    cursor: pointer;
+    font-family: MuseoSans-300;
+    font-weight: 300;
+    font-size:0.75rem;
+    border:solid .05rem rgba(0,0,0,.1);
+}
+
+form .checkbox__label:hover{
+    border:solid .05rem rgba(0,0,0,.5);
+}
+
+form input[type="checkbox"]{
+    display: none;
+}
+
+form input[type="checkbox"]:checked+ .checkbox__label {
+    border:solid .05rem rgba(0,0,0,.5);
+}
+
+form input[type="checkbox"]:checked ~ .checkbox__label::before {
+    content: ' * ';
+    position: relative;
+    left: 0rem;
+    top: -.7rem;
+
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.field__item{
+    flex: 1;
+}
+
+/** END REGISTER  PAGE **/
+
+
+
+/** START ACCOUNT PAGE **/
+.account aside{
+    border-right: solid .05rem rgba(0,0,0,.1);
+    height: calc(100% + 3em);
+}
+
+.account table .btn{
+    padding: 0.2rem;
+    font-size: 0.75rem;
+
+}
+
+.account table tr{
+    padding-bottom: 1rem;
+    font-family: MuseoSans-100;
+    font-weight: 100;
+    font-size:0.75rem;
+}
+
+
+/** END ACCOUNT PAGE **/
+
+
+
+
+
+
+/** COMPONENT PRODUCTS STYLING **/
 .component__title{
     display: flex;
 }
@@ -1203,3 +1361,5 @@ article .accordion{
     font-size: 1rem;
     text-transform: uppercase;
 }
+
+/** END COMPONENT PRODUCTS STYLING **/

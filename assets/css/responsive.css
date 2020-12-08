@@ -21,9 +21,10 @@
 /* END HEADER */
 
 
+
+
+
 /* START CART */
-
-
 @media (max-width: 768px) {
     .cart .cart__product{
         width: 3rem;
@@ -43,6 +44,24 @@
 
 
 
+
+
+/** START ACCOUNT PAGE **/
+
+@media (max-width: 991px)  {
+    .account aside {
+        border-right:none;
+        border-bottom: solid .05rem rgba(0, 0, 0, .1);
+        height: calc(100% + 3em);
+    }
+}
+
+
+/** END ACCOUNT PAGE **/
+
+
+
+
 /* START FOOTER */
 
     /** Small devices **/
@@ -54,6 +73,8 @@
         .footer__usp li{
             font-size: 0.75rem;
         }
+
+
 
     }
 
