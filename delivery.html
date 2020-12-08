@@ -195,65 +195,87 @@
 <div class="col-12 pt-5 pb-5"></div>
 
 <main>
-<!-- START CONTENT -->
-<section class="category pt-5 pb-5">
+<!-- START ACCOUNT SECTION -->
+<section class="account pt-5 pb-5">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-9 col-md-10">
-                <div class="page__title">
-                    <h1>About</h1>
-                    <p>
-                        Quality Blanks is passionate about style, and producing apparel that is as durable as it is rich. There’s nothing easy about simplicity, which is why Unrecorded pays attention to the details, making sure each item is finished to perfection. You’ll notice our range is permanent, suitable for any season: that’s because there’s nothing disposable about what we do. We use only the best, most sustainable fabrics and collaborate with ethical partners. Our range includes items that are all year round essentials suitable for any wardrobe.
-                    </p>
-                </div>
+            <div class="col-12 col-lg-3 pb-5 pb-lg-0">
+                <aside>
+                    <h2>Hello James</h2>
+                    <ul>
+                        <li><a href="account.html">Account information</a></li>
+                        <li><a href="orders.html">My orders</a></li>
+                        <li><a href="delivery.html" class="active">Delivery Address</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </aside>
             </div>
-        </div>
+            <div class="col-12 col-lg-9 pt-5 pt-lg-0">
+                <h1>Delivery Address</h1>
+                <form action="" method="" class="pt-3 pb-5">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="input-group pb-3">
+                                <label for="firstname">First name</label>
+                                <input type="text" name="firstname" id="firstname" value="" placeholder="First name"><br>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="input-group pb-3">
+                                <label for="lastname">Last name</label>
+                                <input type="text" name="lastname" id="lastname" value="" placeholder="Last name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="input-group pb-3">
+                                <label for="postalcode">Postal code</label>
+                                <input type="text" name="postalcode" id="postalcode" value="" placeholder="Postal code"><br>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="input-group pb-3">
+                                <label for="address">Address</label>
+                                <input type="text" name="address" id="address" value="" placeholder="Address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="input-group pb-3">
+                                <label for="city">City</label>
+                                <input type="text" name="city" id="city" value="" placeholder="City"><br>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="input-group pb-3">
+                                <div class="selector col-12 p-0">
+                                <label for="country">Country</label>
 
-        <div class="row  pt-5 pb-5">
-            <div class="content__col col-12 col-lg-6 col-md-6">
-                <div class="content__inner">
-                    <h4>QUALITY</h4>
-                    <p>Quality Blanks is passionate about style, and producing apparel that is as durable as it is
-                             rich. There’s nothing easy about simplicity, which is why Unrecorded pays attention to
-                        the details, making sure each item is finished to perfection. You’ll notice our range is
-                        permanent, suitable for any season: that’s because there’s nothing disposable about what we do. We use only the best, most sustainable fabrics and collaborate with ethical partners. Our range includes items that are all year round essentials suitable for any wardrobe.</p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 col-md-6  pt-5">
-                <img alt="Quality Blanks" class="img-fluid" src="https://images.milled.com/2020-08-20/uPH91qESHMaeu6Nu/TUmD_WUhDyUi.jpg">
-            </div>
-        </div>
-        <div class="row ">
-            <div class="col-12 col-lg-7">
-                <h4>Quality Blanks weaves together style and sustainability. Timeless designs constructed with the
-                    future in mind.</h4>
-            </div>
-        </div>
-        <div class="row  pt-5 pb-5">
-            <div class="col-12 col-lg-6 col-md-6">
-                <img alt="Quality Blanks" class="img-fluid" src="https://images.milled.com/2020-08-20/uPH91qESHMaeu6Nu/8wsifKm21HuJ.jpg">
-            </div>
-            <div class="content__col col-12 col-lg-6 col-md-6 pt-5 pb-5">
-                <div class="content__inner">
-                    <h4>QUALITY</h4>
-                    <p>Quality Blanks is passionate about style, and producing apparel that is as durable as it is
-                        rich. There’s nothing easy about simplicity, which is why Unrecorded pays attention to
-                        the details, making sure each item is finished to perfection. You’ll notice our range is
-                        permanent, suitable for any season: that’s because there’s nothing disposable about what we do. We use only the best, most sustainable fabrics and collaborate with ethical partners. Our range includes items that are all year round essentials suitable for any wardrobe.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-lg-6 pb-5">
-                <img alt="Quality Blanks" class="img-fluid" src="https://images.milled.com/2020-08-20/uPH91qESHMaeu6Nu/8wsifKm21HuJ.jpg">
-            </div>
-            <div class="col-12 col-lg-6 ">
-                <img alt="Quality Blanks" class="img-fluid" src="https://images.milled.com/2020-08-20/uPH91qESHMaeu6Nu/8wsifKm21HuJ.jpg">
+                                <select name="country" id="country" class="custom__select">
+                                    <option title="Netherlands" value="Netherlands">Netherlands</option>
+                                    <option title="Germany" value="Germany">Germany</option>
+                                    <option title="Belgium" value="Belgium">Belgium</option>
+                                </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cta">
+                        <input type="submit" class="btn btn-primary col-6 " value="save">
+                    </div>
+                </form>
+
+
             </div>
         </div>
     </div>
 </section>
-<!-- END CONTENT -->
+<!-- END ACCOUNT SECTION -->
 
 </main>
 
