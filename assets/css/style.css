@@ -131,6 +131,13 @@ label{
     text-transform: uppercase;
 }
 
+label p{
+    text-transform: capitalize;
+    margin-top: revert;
+    margin-bottom: revert;
+}
+
+
 input,
 select{
     font-family: MuseoSans-300;
@@ -538,7 +545,7 @@ input:focus{
     font-family: MuseoSans-700;
 }
 
-.dropdownmenu .sale{
+.sale{
     font-family: MuseoSans-700;
     color:#F00000!important;
 }
@@ -603,12 +610,58 @@ a#cart__menu:after {
     font-weight: 700;
 }
 
-/*.sidr-class-dropdownmenu li a:after {*/
-    /*position: absolute;*/
-    /*width: 100%;*/
-    /*color: #ff0000;*/
-    /*height: 30px;*/
-/*}*/
+
+
+/** offcanvas menu **/
+.offcanvas__menu{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: -1;
+    overflow-x: scroll;
+}
+
+.offcanvas__inner{
+    width: 100%;
+    height: 100%;
+    padding: 3rem 1rem;
+    display: table;
+}
+
+
+.offcanvas__inner .sale{
+    font-family: MuseoSans-900;
+    font-weight: 900;
+    font-size: 0.75rem;
+}
+
+.offcanvas__inner .accordion__content ul{
+    padding-top: 1rem;
+}
+
+.offcanvas__inner  .accordion__content ul li{
+    display: block;
+    padding: .5em 0em;
+}
+
+.shop__languages__currencies{
+    display: table-footer-group;
+}
+
+.shop__languages__currencies li{
+    padding:.5rem 0rem;
+    display: block;
+}
+
+.shop__languages__currencies li a{
+    margin-right: 1rem;
+}
+/** End offcanvas menu **/
+
+
 
 /* END HEADER */
 
@@ -1254,12 +1307,6 @@ form input[type="checkbox"]:checked ~ .checkbox__label::before {
 
 }
 
-label p{
-    text-transform: capitalize;
-    margin-top: revert;
-    margin-bottom: revert;
-}
-
 .group {
     display: flex;
     align-items: center;
@@ -1301,7 +1348,7 @@ label p{
 
 
 
-/** COMPONTENT PRODUCTS STYLING **/
+/** COMPONENT PRODUCTS STYLING **/
 .component__title{
     display: flex;
 }
@@ -1314,3 +1361,5 @@ label p{
     font-size: 1rem;
     text-transform: uppercase;
 }
+
+/** END COMPONENT PRODUCTS STYLING **/
