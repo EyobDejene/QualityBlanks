@@ -21,12 +21,119 @@
 <header class="header">
     <nav class="header__navigation">
         <div class="mobile__menu d-block d-xl-none">
-            <a href="#sidr-main">
-                <svg id="hamburger__menu" width="24" height="13" viewBox="0 0 24 13" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 12.0643H21M0 6.29364H24H0ZM0 0.522949H21H0Z" stroke="white" stroke-miterlimit="10"/>
-                </svg>
-            </a>
+            <svg class="hamburger__menu" width="24" height="13" viewBox="0 0 24 13" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path class="menu" d="M0 12.0643H21M0 6.29364H24H0ZM0 0.522949H21H0Z" stroke="white"
+                      stroke-miterlimit="10"/>
+                <path class="cross d-none"
+                      d="M16,0.5L15.5,0L8,7.5L0.5,0L0,0.5L7.5,8L0,15.5L0.5,16L8,8.5l7.5,7.5l0.5-0.5L8.5,8L16,0.5z"  stroke="black"
+                      stroke-miterlimit="10"/>
+            </svg>
+        </div>
+
+
+        <!-- start mobile offcanvas menu -->
+        <div class="offcanvas__menu">
+            <div class="offcanvas__inner mt-3">
+
+                <!-- start list item -->
+                <div class="accordion pt-5">
+                    <div class="accordion__title">
+                        <strong>Collections <span class="float-right">+</span></strong>
+                    </div>
+                    <div class="accordion__content">
+                        <ul>
+                            <li><a href="">NEW ARRIVALS</a></li>
+                            <li><a href="">Fall/Winter 2020</a></li>
+                            <li><a href="">Spring/Summer 2020</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end list item -->
+
+
+                <!-- start list item -->
+                <div class="accordion pt-2">
+                    <div class="accordion__title">
+                        <strong>CATEGORIES <span class="float-right">+</span></strong>
+                    </div>
+                    <div class="accordion__content">
+                        <ul>
+                            <li><a href="">HOODIES</a></li>
+                            <li><a href="">LONGSLEEVES</a></li>
+                            <li><a href="">POLO’S</a></li>
+                            <li><a href="">OVERSHIRTS</a></li>
+                            <li><a href="">SHIRTS</a></li>
+                            <li><a href="">SWEATS</a></li>
+                            <li><a href="">T-SHIRT</a></li>
+                            <li><a href="">PANTS</a></li>
+                            <li><a href="">SHORTS</a></li>
+                            <li><a href="">JACKETS</a></li>
+                            <li><a href="">PUFFER</a></li>
+                            <li><a href="">WOOLCOAT</a></li>
+                            <li><a href="">BEANIES</a></li>
+                            <li><a href="">CAPS</a></li>
+                            <li><a href="">SOCKS</a></li>
+                            <li><a href="">UNDERWEAR</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end list item -->
+
+                <!-- start list item -->
+                <div class="accordion pt-2">
+                    <div class="accordion__title">
+                        <a href=""><strong class="sale">Sale</strong><strong><span class="float-right">+</span></strong></a>
+                    </div>
+                    <div class="accordion__content">
+                        <ul>
+                            <li><a href="">HOODIES</a></li>
+                            <li><a href="">LONGSLEEVES</a></li>
+                            <li><a href="">POLO’S</a></li>
+                            <li><a href="">OVERSHIRTS</a></li>
+                            <li><a href="">SHIRTS</a></li>
+                            <li><a href="">SWEATS</a></li>
+                            <li><a href="">T-SHIRT</a></li>
+                            <li><a href="">PANTS</a></li>
+                            <li><a href="">SHORTS</a></li>
+                            <li><a href="">JACKETS</a></li>
+                            <li><a href="">PUFFER</a></li>
+                            <li><a href="">WOOLCOAT</a></li>
+                            <li><a href="">BEANIES</a></li>
+                            <li><a href="">CAPS</a></li>
+                            <li><a href="">SOCKS</a></li>
+                            <li><a href="">UNDERWEAR</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end list item -->
+
+                <!-- start list item -->
+                <div class="accordion pt-2">
+                    <div class="accordion__title">
+                        <a href="login.html"><strong>Account</strong></a>
+                    </div>
+                </div>
+                <!-- end list item -->
+
+                <ul class="shop__languages__currencies pt-2">
+                    <li>
+                        <a href="/nl" class="active">NL</a>
+                        <a href="/us" class="">US</a>
+                    </li>
+                    <li>
+                        <a href="https://www.baskets-store.com/nl/session/currency/eur/" class="active">EUR</a>
+                        <a href="https://www.baskets-store.com/nl/session/currency/gbp/" class="">GBP</a>
+                        <a href="https://www.baskets-store.com/nl/session/currency/usd/" class="">USD</a>
+                    </li>
+                </ul>
+
+
+
+
+            </div>
+        </div>
+        <!-- end mobile offcanvas menu -->
         </div>
 
         <ul class="main__menu d-none d-xl-block">
@@ -88,7 +195,7 @@
             </li>
             </li>
 
-            <li><a href="/collections/all"><span>+</span>About</a></li>
+            <li><a href="about.html"><span>+</span>About</a></li>
 
         </ul>
 
@@ -163,9 +270,26 @@
         <div class="header__usernav">
             <ul class="text-right main__menu">
                 <li class="d-none d-xl-inline-block header__usernav--search"><a href="#"><span>+</span>search</a></li>
-                <li class="d-none d-xl-inline-block"><a href="account.html"><span>+</span>account</a></li>
+                <li class="d-none d-xl-inline-block"><a href="login.html"><span>+</span>account</a></li>
                 <li class="d-none d-xl-inline-block"><a href="cart.html"><span>+</span>cart (<span class="cart__count">0</span>)</a></li>
-                <li class="d-block d-xl-none">
+                <li class="d-inline-block d-xl-none mobile__search">
+                    <div class="search">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg class="header__loupe" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+
+		<path class="st0" d="M508.9,493.8L353.1,338c32.3-35.9,52.2-83.3,52.2-135.3C405.3,90.9,314.4,0,202.7,0S0,90.9,0,202.7
+			s90.9,202.7,202.7,202.7c52.1,0,99.4-19.9,135.3-52.2L493.8,509c2.1,2.1,4.8,3.1,7.6,3.1s5.5-1,7.6-3.1
+			C513,504.7,513,498,508.9,493.8z M202.7,384c-100,0-181.3-81.3-181.3-181.3S102.7,21.3,202.7,21.3S384,102.7,384,202.7
+			S302.7,384,202.7,384z"/>
+
+</svg>
+
+                    </div>
+                </li>
+                <li class="d-inline-block d-xl-none">
                     <a href="cart.html">
                         <svg id="cart__menu" viewBox="0 0 19 22" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -188,8 +312,10 @@
         </div>
     </nav>
 
+
 </header>
 <!-- END HEADER -->
+
 
 <!-- spacer -->
 <div class="col-12 pt-5 pb-5"></div>
@@ -212,11 +338,11 @@
 
         <!-- START CART ITEMS -->
                 <div class="row">
-                   <div class="col-12 pt-5 pb-5">
+                   <div class="col-12 pt-3 pb-5">
                        <form action="/cart" method="post">
                        <table style="width:100%">
                            <tr>
-                               <th></th>
+                               <th>&nbsp;</th>
                                <th>Item</th>
                                <th>Price</th>
                                <th>Quantity</th>
@@ -280,8 +406,7 @@
                                <td>
                                    <div class="product__info">
                                        <div class="product__inner">
-                                           <a href="https://www.baskets-store.com/nl/stussy-bottlecap-tee-white.html"
-                                              title="QB23" class="product__style">QB24</a>
+                                           <a href="https://www.baskets-store.com/nl/stussy-bottlecap-tee-white.html" title="QB23" class="product__style">QB24</a>
                                            <a href="https://www.baskets-store.com/nl/stussy-bottlecap-tee-white.html" title="QB23 PUFFER DARK RED" class="product__title">SHORT JACKET BLACK</a>
                                            <div class="product__variant"><strong>Size:</strong><span
                                                    class="product__size">L</span></div>
@@ -297,11 +422,14 @@
                                    <input type="text" name="quantity" class="product__quantity" value="1">
                                </td>
                                <td class="d-none d-lg-table-cell d-md-table-cell">
-                                   <div class="product__totalprice"><span class="product__new-price">150,00</span></div>
+                                   <div class="product__totalprice"><span class="product__new-price"><span
+                                           class="product__currency">€</span>150,00</span></div>
                                </td>
-                               <td><a href="/cart/product2" class="product__remove">x</a></td>
+                               <td><a href="/cart/product1" class="product__remove">x</a></td>
                            </tr>
                            <!-- end product row -->
+
+
                        </table>
 
                            <!-- start checkout button -->
