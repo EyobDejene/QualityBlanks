@@ -31,21 +31,46 @@ function checkHasMenu(){
 dropdownMenu.addEventListener("click", dropdownClose);
 
 function headerOpen(){
-  changeHeaderColors(false);
+  //changeHeaderColors(true);
+  document.querySelector('header').classList.add('active');
+
+  if(checkIfHomePage()) {
+    if (isScrolledIntoView(document.querySelector('.hero'))) {
+      changeHeaderToBlack(false);
+    }
+  }
 }
 
 function headerClose(){
-  changeHeaderColors(true);
+ // changeHeaderColors(false);
+  document.querySelector('header').classList.remove('active');
+
+  if(checkIfHomePage()) {
+    if (isScrolledIntoView(document.querySelector('.hero'))) {
+      changeHeaderToWhite();
+    }
+  }
+
 }
 
 function dropdownClose() {
   console.log('click');
   dropdownMenu.classList.remove('dropdownmenu--active');
-  changeHeaderColors(true);
+  document.querySelector('header').classList.remove('active');
+
+  if(checkIfHomePage()) {
+    if (isScrolledIntoView(document.querySelector('.hero'))) {
+      changeHeaderToWhite();
+    } else {
+      changeHeaderToBlack(true);
+    }
+  }
+
 }
 
 
-function ChangeHeaderToBlack(transparent){
+
+function changeHeaderToBlack(transparent){
   dropdownMenu.style.display = '';
   let header = document.querySelector('header');
   // add active state to header nav items
@@ -53,6 +78,7 @@ function ChangeHeaderToBlack(transparent){
   if(!transparent) {
     header.classList.add('active');
   }
+
   for (let i = 0; i < navLinks.length; i++) {
     navLinks[i].classList.add('header__navigation--black');
     navLinks[i].classList.remove('header__navigation--white');
@@ -70,11 +96,17 @@ function ChangeHeaderToBlack(transparent){
   document.querySelector(".header__searchbar .input__group--addon").classList.add('header__navigation--black');
 
   //change loupe to black
-  document.querySelector(".header__loupe .st0").classList.add('header__navigation--black');
+  let headerLoupe = document.querySelectorAll(".header__loupe .st0");
+  for (let i = 0; i < headerLoupe.length; i++) {
+    headerLoupe[i].classList.add('black--fill');
+  }
 
   //change mobile menu to black
-  document.querySelector("#hamburger__menu path").classList.add('black--stroke');
+  document.querySelector(".hamburger__menu path").classList.add('black--stroke');
   document.querySelector(".cart__amount").classList.add('header__navigation--white');
+
+
+
   let cartIcon = document.querySelectorAll("#cart__menu path");
   for (let i = 0; i < cartIcon.length; i++) {
     cartIcon[i].classList.add('black--stroke');
@@ -84,14 +116,15 @@ function ChangeHeaderToBlack(transparent){
 }
 
 
-function ChangeHeaderToWhite(){
+function changeHeaderToWhite(){
   let header = document.querySelector('header');
   header.classList.remove('active');
 
   // remove active state to header nav items
   let navLinks = document.querySelectorAll('header li a');
+
   for (let i = 0; i < navLinks.length; i++) {
-   // navLinks[i].classList.remove('header__navigation--black');
+    navLinks[i].classList.remove('header__navigation--black');
     navLinks[i].classList.add('header__navigation--white');
   }
 
@@ -107,11 +140,28 @@ function ChangeHeaderToWhite(){
   document.querySelector(".header__searchbar .input__group--addon").classList.remove('header__navigation--black');
 
   //change loupe to black
-  document.querySelector(".header__loupe .st0").classList.remove('header__navigation--black');
+  let headerLoupe = document.querySelectorAll(".header__loupe .st0");
+  for (let i = 0; i < headerLoupe.length; i++) {
+    headerLoupe[i].classList.remove('black--fill');
+  }
 
   //change mobile menu to default
-  document.querySelector("#hamburger__menu path").classList.remove('black--stroke');
+  document.querySelector(".hamburger__menu path").classList.remove('black--stroke');
   document.querySelector(".cart__amount").classList.remove('header__navigation--white');
+
+
+
+
+  // if offcanvas is active change colors to black
+  if(document.querySelector('.offcanvas__menu--active')) {
+    changeHeaderToBlack(false);
+    document.querySelector(".cart__amount").classList.add('header__navigation--black');
+    document.querySelector(".cart__menu").classList.add('header__navigation--black');
+  }
+
+
+
+
   let cartIcon = document.querySelectorAll("#cart__menu path");
   for (let i = 0; i < cartIcon.length; i++) {
     cartIcon[i].classList.remove('black--stroke');
@@ -121,23 +171,11 @@ function ChangeHeaderToWhite(){
 
 
 // function check if page homepage and change header colors
+// state can be true or false stands for transparent header
 function changeHeaderColors(state){
-  if(state) {
-    if (!checkIfHomePage()) {
-      ChangeHeaderToWhite();
-      ChangeHeaderToBlack(state);
-    } else {
-      ChangeHeaderToWhite();
-      console.log('add white');
-    }
-  }else{
-    if(checkIfHomePage()){
-      ChangeHeaderToBlack(state);
-    }else{
-      ChangeHeaderToWhite();
-      ChangeHeaderToBlack(state);
-    }
-  }
+  console.log(state);
+
+
 }
 
 
@@ -164,6 +202,7 @@ function isScrolledIntoView(element) {
   let elemTop = rect.top;
   let elemBottom = rect.bottom;
   let header = document.querySelector('header');
+  let mobileMenu = document.querySelector('.offcanvas__menu');
   // Only completely visible elements return true:
   let isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
 
@@ -172,15 +211,15 @@ function isScrolledIntoView(element) {
 
   if (isVisible) {
     // console.log(scroll);
-    if(!header.classList.contains('active')){
-      ChangeHeaderToWhite();
+    if(!header.classList.contains('active')&&!mobileMenu.classList.contains('offcanvas__menu--active')){
+      changeHeaderToWhite();
     }
-
-  } else {
+  }else {
     // console.log('hero is not visible');
-    ChangeHeaderToBlack(true);
-
+    changeHeaderToBlack(true);
   }
+
+  return isVisible;
 
 }
 
@@ -301,49 +340,67 @@ function openUrl($this){
 
 /**
  * Activate searchbar
- * When user clicks on search logo will
- * disappear and searchbar showsup
+ * When user clicks on search logo will disappear and searchbar showsup
  * @type {Element}
  */
 
 let searchBtn = document.querySelector('.header__usernav--search');
 searchBtn.addEventListener('click', activateSearchBar);
 
-// set color of letiant list on product
+// activate search field and replace with logo
 function activateSearchBar(event){
   event.preventDefault();
 
   let searchBar = document.querySelector('.header__searchbar');
   let headerLogo = document.querySelector('.header__logo .logo');
 
-  headerLogo.classList.toggle('fadeOut');
-  searchBar.classList.toggle('fadeIn');
+  toggleSearch(true);
 
-
-
-  let initial;
-  function invocation() {
-    console.log('invoked');
-    initial = window.setTimeout(
-        function() {
-          resetHeader();
-        }, 5000);
+  function toggleSearch(state){
+    if(state){
+      headerLogo.classList.add('fadeOut');
+      setTimeout(function(){
+        searchBar.classList.add('fadeIn');
+      },500);
+    }else{
+      searchBar.classList.add('fadeOut');
+      searchBar.classList.remove('fadeIn');
+      setTimeout(function(){
+        headerLogo.classList.remove('fadeIn');
+        headerLogo.classList.remove('fadeOut');
+      },500);
+    }
   }
-  invocation();
 
 
-  let searchForm = document.querySelector(".header__searchfield");
-  searchForm.addEventListener("keypress",function() {
-    clearTimeout(initial);
+  let inactivityTime = function () {
+    let time;
+    time = setTimeout(logout, 5000);
+    console.log(time);
+    window.onload = resetTimer;
+    // DOM Events
+    let searchForm = document.querySelector(".header__searchfield");
+    searchForm.addEventListener("keypress",resetTimer);
 
-  });
+    function logout() {
+      console.log("You are now logged out.");
+      toggleSearch(false);
+    }
+
+    function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(logout, 3000);
+      toggleSearch(true);
+    }
+  };
+
+  inactivityTime();
 
 
-  function resetHeader(){
-    headerLogo.classList.toggle('fadeOut');
-    searchBar.classList.toggle('fadeIn');
-
-  }
+  // trigger focus on search field
+  setTimeout(function(){
+    document.querySelector(".header__searchfield").focus();
+  },1200);
 
 
 }
@@ -392,7 +449,7 @@ function checkIfHomePage() {
   }else{
     document.querySelector('.header__navigation').classList.add('header__navigation--border');
     // first parameter sets header to transparent
-    ChangeHeaderToBlack(true);
+    changeHeaderToBlack(true);
     return false;
   }
 
@@ -512,10 +569,42 @@ function getContentData(){
  * @type {Element}
  */
 
-let menuBtn = document.querySelector('#hamburger__menu');
+let menuBtn = document.querySelector('.hamburger__menu');
 menuBtn.addEventListener('click',toggleMenu);
 function toggleMenu(){
   let mobileMenu = document.querySelector('.offcanvas__menu');
   mobileMenu.classList.toggle('offcanvas__menu--active');
+  menuBtn.querySelector('.menu').classList.toggle('d-none');
+  menuBtn.querySelector('.cross').classList.toggle('d-none');
+  if(mobileMenu.classList.contains('offcanvas__menu--active')){
+     changeHeaderToBlack(true);
+    if(isScrolledIntoView(document.querySelector('.hero'))){
+      changeHeaderToBlack(true);
+    }
+  }else{
+    if(isScrolledIntoView(document.querySelector('.hero'))) {
+      changeHeaderToWhite();
+    }else{
+      changeHeaderToBlack(true);
+    }
+  }
 
 }
+
+
+
+/**
+ * Open mobile search
+ * open and close mobile search
+ * @type {Element}
+ */
+
+let mobileSearchBtn = document.querySelector('.search');
+mobileSearchBtn.addEventListener('click', triggerMobileSearch);
+
+function triggerMobileSearch(){
+
+
+}
+
+
