@@ -342,9 +342,6 @@ header ul li {
     padding: 0.1em .5em;
 }
 
-/*header ul li:hover .dropdownmenu {*/
-    /*display: flex;*/
-/*}*/
 
 .dropdownmenu--active{
     display: flex!important;
@@ -615,13 +612,18 @@ a#cart__menu:after {
 /** offcanvas menu **/
 .offcanvas__menu{
     position: fixed;
-    left: 0;
+    left: -100%;
     top: 0;
     width: 100%;
     height: 100%;
     background: #fff;
     z-index: -1;
     overflow-x: scroll;
+    transition: all 0.5s ease;
+}
+
+.offcanvas__menu--active{
+    left: 0%;
 }
 
 .offcanvas__inner{
@@ -658,6 +660,14 @@ a#cart__menu:after {
 
 .shop__languages__currencies li a{
     margin-right: 1rem;
+}
+
+
+.offcanvas__inner .active {
+    background: rgba(255, 255, 255, 0.9);
+    color:#000000;
+    font-family: MuseoSans-700;
+    border-bottom: 1px solid #000;
 }
 /** End offcanvas menu **/
 

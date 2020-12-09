@@ -91,7 +91,7 @@ function ChangeHeaderToWhite(){
   // remove active state to header nav items
   let navLinks = document.querySelectorAll('header li a');
   for (let i = 0; i < navLinks.length; i++) {
-    navLinks[i].classList.remove('header__navigation--black');
+   // navLinks[i].classList.remove('header__navigation--black');
     navLinks[i].classList.add('header__navigation--white');
   }
 
@@ -505,3 +505,17 @@ function getContentData(){
 
 
 
+
+/**
+ * Offcanvas menu toggle
+ * open and close mobile menu
+ * @type {Element}
+ */
+
+let menuBtn = document.querySelector('#hamburger__menu');
+menuBtn.addEventListener('click',toggleMenu);
+function toggleMenu(){
+  let mobileMenu = document.querySelector('.offcanvas__menu');
+  mobileMenu.classList.toggle('offcanvas__menu--active');
+
+}
