@@ -254,8 +254,17 @@ a {
 }
 
 a:hover{
-    color: #000000!important;
+    color: #000000;
 }
+
+.btn-primary{
+    color: #FFFFFF;
+}
+
+.btn-primary:hover{
+    background-color: #3b3b3b;
+}
+
 
 ul {
     padding-left: 0;
@@ -321,7 +330,6 @@ aside ul li .active{
 /* HEADER */
 
 header {
-    /*border-bottom: 2px solid #000 !important;*/
     background-color: transparent;
     padding: 1.75em 1em 0em 1em;
     position: fixed;
@@ -349,8 +357,8 @@ header ul li {
 }
 
 
-.dropdownmenu--active{
-    display: flex!important;
+header .dropdownmenu--active{
+    display: flex;
 }
 
 header ul li span {
@@ -367,11 +375,11 @@ header ul li a {
 
 
 header ul li a:hover{
-    color: #FFFFFF!important;
+    color: #FFFFFF;
 }
 
 .dropdownmenu ul li a:hover{
-    color:#000000!important;
+    color:#000000;
 }
 
 
@@ -390,7 +398,6 @@ header ul li a:hover{
 .header__searchbar input.header__navigation--black::-webkit-input-placeholder {
     color: #000000!important;
 }
-
 
 .black--stroke{
     stroke: #000000!important;
@@ -479,7 +486,7 @@ header ul li a:hover{
 }
 
 .input__group--addon{
-    border-bottom: solid .1rem #ffffff;
+    /*border-bottom: solid .1rem #ffffff;*/
 }
 
 .header__searchbar input{
@@ -494,23 +501,23 @@ header ul li a:hover{
 }
 
 .header__searchbar input::placeholder{
-    color: #FFFFFF!important;
+    color: #FFFFFF;
 }
 .header__searchbar input::-webkit-input-placeholder{
-    color: #FFFFFF!important;
+    color: #FFFFFF;
 }
 .header__searchbar input:-ms-input-placeholder{
-    color: #FFFFFF!important;
+    color: #FFFFFF;
 }
 
 .header__searchbar .black::-webkit-input-placeholder {
     color: #000000;
 }
 .header__searchbar .black::-webkit-input-placeholder{
-    color: #000000!important;
+    color: #000000;
 }
 .header__searchbar .black:-ms-input-placeholder{
-    color: #000000!important;
+    color: #000000;
 }
 
 
@@ -674,7 +681,7 @@ a#cart__menu:after {
     align-items: center;
     justify-content: center;
     font-size:0.75rem;
-    color: #FFFFFF!important;
+    color: #FFFFFF;
 }
 
 .cart__count{
@@ -778,6 +785,11 @@ a#cart__menu:after {
     font-size: 2rem;
 }
 
+.hero .btn-secondary:hover{
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
 .hero__subtitle{
     font-family: MuseoSans-300;
     font-size: 1rem;
@@ -871,7 +883,7 @@ a#cart__menu:after {
 }
 
 .visible{
-    visibility: visible!important;
+    visibility: visible;
 }
 
 .product:hover .product__image--second{
