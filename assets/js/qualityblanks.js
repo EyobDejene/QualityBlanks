@@ -353,18 +353,39 @@ function activateSearchBar(event){
 
   let searchBar = document.querySelector('.header__searchbar');
   let headerLogo = document.querySelector('.header__logo .logo');
+  let mobileUsernav = document.querySelector('.mobile__header__usernav');
 
   toggleSearch(true);
 
   function toggleSearch(state){
     if(state){
       headerLogo.classList.add('fadeOut');
+
+      //check if mobile screen
+
+      if(mobileUsernav) {
+        setTimeout(function() {
+          mobileUsernav.classList.add('fadeOut');
+          document.querySelector('.mobile__menu').style.flex = 'unset';
+          mobileUsernav.style.display = 'none';
+        }, 500);
+      }
+
       setTimeout(function(){
         searchBar.classList.add('fadeIn');
       },500);
     }else{
       searchBar.classList.add('fadeOut');
       searchBar.classList.remove('fadeIn');
+
+      if(mobileUsernav) {
+        setTimeout(function() {
+          mobileUsernav.classList.remove('fadeOut');
+          document.querySelector('.mobile__menu').style.flex = '';
+          mobileUsernav.style.display = 'flex';
+        }, 500);
+      }
+      document.querySelector('.header__usernav').classList.remove('mobile__header__usernav');
       setTimeout(function(){
         headerLogo.classList.remove('fadeIn');
         headerLogo.classList.remove('fadeOut');
@@ -384,13 +405,13 @@ function activateSearchBar(event){
 
     function logout() {
       console.log("You are now logged out.");
-      toggleSearch(false);
+     toggleSearch(false);
     }
 
     function resetTimer() {
       clearTimeout(time);
       time = setTimeout(logout, 3000);
-      toggleSearch(true);
+     toggleSearch(true);
     }
   };
 
@@ -400,7 +421,7 @@ function activateSearchBar(event){
   // trigger focus on search field
   setTimeout(function(){
     document.querySelector(".header__searchfield").focus();
-  },1200);
+  },1500);
 
 
 }
@@ -599,12 +620,20 @@ function toggleMenu(){
  * @type {Element}
  */
 
-let mobileSearchBtn = document.querySelector('.search');
+let mobileSearchBtn = document.querySelector('.mobile__search .header__loupe');
+let header = document.querySelector('header');
 mobileSearchBtn.addEventListener('click', triggerMobileSearch);
 
 function triggerMobileSearch(){
+  document.querySelector('.header__usernav').classList.add('mobile__header__usernav');
+  activateSearchBar(event);
+  console.log('mobile search pressed');
 
-
+  // changeHeaderToBlack();
+  // document.querySelector('.header__logo').remove();
+  // document.querySelector('.header__cart').remove();
+  // document.querySelector('.mobile__menu').remove();
+  // document.querySelector('.header__loupe').remove();
 }
 
 
