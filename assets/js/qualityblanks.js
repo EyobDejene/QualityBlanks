@@ -400,7 +400,7 @@ function activateSearchBar(event){
 
     function resetTimer() {
       clearTimeout(time);
-      time = setTimeout(logout, 3000);
+      time = setTimeout(logout, 5000);
      toggleSearch(true);
     }
   };
