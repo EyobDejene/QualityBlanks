@@ -733,6 +733,19 @@ a#cart__menu:after {
     padding: .5em 0em;
 }
 
+.offcanvas__menu .accordion__content a{
+    display: flex;
+}
+
+.offcanvas__menu .accordion__content a::after{
+    content: "";
+    width:100%;
+    flex: 1;
+    height: 1.5rem;
+    position: relative;
+}
+
+
 .shop__languages__currencies{
     display: table-footer-group;
 }
@@ -745,6 +758,8 @@ a#cart__menu:after {
 .shop__languages__currencies li a{
     margin-right: 1rem;
 }
+
+
 
 
 .offcanvas__inner .active {
@@ -1072,6 +1087,7 @@ a#cart__menu:after {
     padding-bottom: 0.75rem;
     cursor: pointer;
 }
+
 
 
 /** PRODUCT CAROUSEL **/

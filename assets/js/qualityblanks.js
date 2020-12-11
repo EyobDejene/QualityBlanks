@@ -4,36 +4,23 @@
  * Shows submenu if exists and changes header colors
  * @type {Element}
  */
-//let header = document.querySelector('nav li');
-let navWithMenu = document.querySelectorAll('header li');
-// console.log(navWithMenu);
-let dropdownMenu  = document.querySelector(".dropdownmenu");
 
-for (let i = 0; i < navWithMenu.length; i++) {
-  if(navWithMenu[i].parentNode.classList.contains('main__menu')){
-    navWithMenu[i].addEventListener("mouseenter", checkHasMenu);
-  }
-}
 
+
+// check if menu item contains dropdown menu
 function checkHasMenu(){
  if(this.querySelector('.dropdownmenu')){
    headerOpen();
    dropdownMenu.classList.add('dropdownmenu--active');
    console.log('header open');
-
  }else{
    dropdownMenu.classList.remove('dropdownmenu--active');
    headerClose();
  }
-
 }
 
-dropdownMenu.addEventListener("click", dropdownClose);
-
 function headerOpen(){
-  //changeHeaderColors(true);
   document.querySelector('header').classList.add('active');
-
   if(checkIfHomePage()) {
     if (isScrolledIntoView(document.querySelector('.hero'))) {
       changeHeaderToBlack(false);
@@ -42,22 +29,19 @@ function headerOpen(){
 }
 
 function headerClose(){
- // changeHeaderColors(false);
   document.querySelector('header').classList.remove('active');
-
   if(checkIfHomePage()) {
     if (isScrolledIntoView(document.querySelector('.hero'))) {
       changeHeaderToWhite();
     }
   }
-
 }
 
+
+
 function dropdownClose() {
-  console.log('click');
   dropdownMenu.classList.remove('dropdownmenu--active');
   document.querySelector('header').classList.remove('active');
-
   if(checkIfHomePage()) {
     if (isScrolledIntoView(document.querySelector('.hero'))) {
       changeHeaderToWhite();
@@ -65,8 +49,19 @@ function dropdownClose() {
       changeHeaderToBlack(true);
     }
   }
-
 }
+
+
+let navWithMenu = document.querySelectorAll('header li');
+for (let i = 0; i < navWithMenu.length; i++) {
+  if(navWithMenu[i].parentNode.classList.contains('main__menu')){
+    navWithMenu[i].addEventListener("mouseenter", checkHasMenu);
+  }
+}
+
+let dropdownMenu  = document.querySelector(".dropdownmenu");
+// when clicking on dropdown area close dropdown menu
+dropdownMenu.addEventListener("click", dropdownClose);
 
 
 
@@ -150,8 +145,6 @@ function changeHeaderToWhite(){
   document.querySelector(".cart__amount").classList.remove('header__navigation--white');
 
 
-
-
   // if offcanvas is active change colors to black
   if(document.querySelector('.offcanvas__menu--active')) {
     changeHeaderToBlack(false);
@@ -159,9 +152,7 @@ function changeHeaderToWhite(){
     document.querySelector(".cart__menu").classList.add('header__navigation--black');
   }
 
-
-
-
+  // add black stroke to all cart menu paths
   let cartIcon = document.querySelectorAll("#cart__menu path");
   for (let i = 0; i < cartIcon.length; i++) {
     cartIcon[i].classList.remove('black--stroke');
@@ -169,14 +160,6 @@ function changeHeaderToWhite(){
 }
 
 
-
-// function check if page homepage and change header colors
-// state can be true or false stands for transparent header
-function changeHeaderColors(state){
-  console.log(state);
-
-
-}
 
 
 /**
@@ -191,35 +174,36 @@ window.addEventListener('scroll', function() {
   if(hero){
     isScrolledIntoView(hero);
   }
-
 });
 
 // check if element is in viewport
 function isScrolledIntoView(element) {
+  if(element) {
+    let scroll = window.scrollY;
+    let rect = element.getBoundingClientRect();
+    let elemTop = rect.top;
+    let elemBottom = rect.bottom;
+    let header = document.querySelector('header');
+    let mobileMenu = document.querySelector('.offcanvas__menu');
+    // Only completely visible elements return true:
+    let isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
 
-  let scroll = window.scrollY;
-  let rect = element.getBoundingClientRect();
-  let elemTop = rect.top;
-  let elemBottom = rect.bottom;
-  let header = document.querySelector('header');
-  let mobileMenu = document.querySelector('.offcanvas__menu');
-  // Only completely visible elements return true:
-  let isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    // Partially visible elements return true:
+    isVisible = elemTop < window.innerHeight && elemBottom >= 0;
 
-  // Partially visible elements return true:
-  isVisible = elemTop < window.innerHeight && elemBottom >= 0;
-
-  if (isVisible) {
-    // console.log(scroll);
-    if(!header.classList.contains('active')&&!mobileMenu.classList.contains('offcanvas__menu--active')){
-      changeHeaderToWhite();
+    if (isVisible) {
+      // console.log(scroll);
+      if (!header.classList.contains('active') &&
+          !mobileMenu.classList.contains('offcanvas__menu--active')) {
+        changeHeaderToWhite();
+      }
+    } else {
+      // console.log('hero is not visible');
+      changeHeaderToBlack(true);
     }
-  }else {
-    // console.log('hero is not visible');
-    changeHeaderToBlack(true);
-  }
 
-  return isVisible;
+    return isVisible;
+  }
 
 }
 
@@ -259,12 +243,14 @@ for (let i = 0; i < products.length; i++) {
 
 
 
-
+// select product details and checks if contains variants
 let productVariant = document.querySelector('.product__details');
 if(productVariant){
   checkVariant(true);
 }
 
+
+// check variant details
 function checkVariant(detail) {
   let $this = this;
   if (detail === true){
@@ -273,7 +259,6 @@ function checkVariant(detail) {
   let productVariant = $this.querySelector('.product__variants');
   let variantsColorList = [];
   let variantsList = $this.querySelectorAll('.product__variants li');
-
 
 
   let productHasVariants = $this.querySelector('.product__variants');
@@ -285,6 +270,9 @@ function checkVariant(detail) {
 
   }
 
+
+  // if product contains variant get last part of url and check color adds
+  // class color to element
   if(productVariant)
   {
     let variants = productVariant.querySelectorAll('li a');
@@ -298,10 +286,10 @@ function checkVariant(detail) {
       //push values to array
       variantsColorList.push(result);
     }
-
     changeVariantColor(variantsList,variantsColorList);
   }
 }
+
 // set color of variant list on product
 function changeVariantColor(variantsList,variantsColorList){
   for (let i = 0; i < variantsList.length; i++) {
@@ -394,12 +382,14 @@ function activateSearchBar(event){
   }
 
 
+
+  // checks inactivity of the search bar
   let inactivityTime = function () {
     let time;
     time = setTimeout(logout, 5000);
     console.log(time);
     window.onload = resetTimer;
-    // DOM Events
+
     let searchForm = document.querySelector(".header__searchfield");
     searchForm.addEventListener("keypress",resetTimer);
 
@@ -479,25 +469,19 @@ function checkIfHomePage() {
 
 
 /**
- * Detail page accordion
- * Detail page open / close accordion
+ * All pages check contains accordion
+ * opens / closes accordion
  * @type {Element}
  */
 let accordion =  document.querySelector('.accordion');
 if(accordion){
-  CheckAccordion();
-}
-
-function CheckAccordion(){
-  console.log('click accordion');
- let accordionItem = document.querySelectorAll('.accordion');
- for (let i = 0; i < accordionItem.length; i++) {
-  accordionItem[i].addEventListener("click", accordionToggle);
+  let accordionItem = document.querySelectorAll('.accordion');
+  for (let i = 0; i < accordionItem.length; i++) {
+    accordionItem[i].addEventListener("click", accordionToggle);
   }
 }
 
 function accordionToggle(){
-  console.log(this);
   this.querySelector('.accordion__content').classList.toggle('accordion__content--show');
 }
 
@@ -510,7 +494,6 @@ function accordionToggle(){
  */
 
 let removeBtn = document.querySelectorAll('.product__remove');
-
 if(removeBtn){
   for (let i = 0; i < removeBtn.length; i++) {
     removeBtn[i].addEventListener("click", removeProductFromCart);
@@ -628,12 +611,6 @@ function triggerMobileSearch(){
   document.querySelector('.header__usernav').classList.add('mobile__header__usernav');
   activateSearchBar(event);
   console.log('mobile search pressed');
-
-  // changeHeaderToBlack();
-  // document.querySelector('.header__logo').remove();
-  // document.querySelector('.header__cart').remove();
-  // document.querySelector('.mobile__menu').remove();
-  // document.querySelector('.header__loupe').remove();
 }
 
 
