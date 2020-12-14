@@ -6,7 +6,9 @@
     .cart__amount{
         right: .8rem;
     }
-
+    .mobile__menu{
+        margin-right: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -16,7 +18,6 @@
     .cart__amount{
         right: .8rem;
     }
-
 
 
 }
